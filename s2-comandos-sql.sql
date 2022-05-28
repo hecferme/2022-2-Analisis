@@ -36,3 +36,11 @@ select
 		when @h2 > 5 then 'Cinco'
 		else 'Hola Mundo'
 	end as ColumnaCase
+
+declare @t1 as table (x int primary key, y varchar (10));
+insert into @t1 values (5, 'Hello');
+insert into @t1 values (8, 'World');
+insert into @t1 values (5, 'Hola');
+select * from @t1;
+
+
