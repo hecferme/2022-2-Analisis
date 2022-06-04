@@ -1,10 +1,11 @@
 ------------ dim product ---------------
 use AdventureWorksLT2019
+--select * from SalesLT.Product p;
 select  pm.Name as ProductModel, ppc.Name as ParentProductCategory, pc.Name as CategoryName, 
 p.ProductID, p.Name, p.Color, p.ListPrice, p.StandardCost, p.Size, p.Weight,
 p.SellStartDate, p.SellEndDate, p.DiscontinuedDate,
 '' as EstratoCost, '' as EstratoPrice
---into DimProduct
+--into DWAdventureWorksLT.dbo.DimProduct
 from SalesLT.Product as p
 inner join SalesLT.ProductCategory pc
 	on pc.ProductCategoryID = p.ProductCategoryID
@@ -12,16 +13,16 @@ inner join SalesLT.ProductCategory ppc
 	on ppc.ProductCategoryID = pc.ParentProductCategoryID
 inner join SalesLT.ProductModel pm
 	on pm.ProductModelID = p.ProductModelID
-where p.Color like '%e'
+--where p.Color like '%e'
 order by p.ListPrice desc
 
 
 ------------- dim customer -----------------
 use AdventureWorksLT2019
-select max (ca.AddressType), c.CustomerID, c.FirstName + ' ' + c.LastName as SingleFirstNameLastName
+select max (ca.AddressType) as AddressType, c.CustomerID, c.FirstName + ' ' + c.LastName as SingleFirstNameLastName
 , c.LastName + ', ' + c.FirstName as SingleLastNameFirstName
 , c.CompanyName, a.City, a.StateProvince, a.CountryRegion
---into DimCustomer
+--into DWAdventureWorksLT.dbo.DimCustomer
 from SalesLT.Customer c
 inner join SalesLT.CustomerAddress ca
 	on c.CustomerID = ca.CustomerID
@@ -43,6 +44,7 @@ else 'Unknown' end as Status,
 h.OnlineOrderFlag, h.CustomerID 
 , a.City, a.StateProvince, a.CountryRegion, h.ShipMethod, 
 h.SubTotal, h.TaxAmt, h.Freight, h.TotalDue
+--into DWAdventureWorksLT.dbo.FactSalesOrderHeader
 from SalesLT.SalesOrderHeader h
 inner join SalesLT.Address a
 	on a.AddressID = h.ShipToAddressID
@@ -56,6 +58,7 @@ d.UnitPriceDiscount * d.UnitPrice as UnitDiscount,
 d.UnitPrice * d.OrderQty as PreviousTotal,
 d.UnitPriceDiscount * d.UnitPrice * d.OrderQty as TotalDiscount
 ,d.LineTotal
+--into DWAdventureWorksLT.dbo.FactSalesOrderDetail
 from SalesLT.SalesOrderDetail d 
 
 /*
