@@ -33,7 +33,22 @@ group by
 	, c.CompanyName, a.City, a.StateProvince, a.CountryRegion
 
 -------------------- fact sales order header ----------------
+use AdventureWorksLT2019
+select h.SalesOrderID, h.OrderDate, h.DueDate, h.ShipDate
+, case h.Status
+when 1 then 'In process' when 2 then 'Approved' 
+when 3 then 'Backordered' when 4 then 'Rejected'
+when 5 then 'Shipped' when 6 then 'Cancelled'
+else 'Unknown' end as Status,
+h.OnlineOrderFlag, h.CustomerID 
+, a.City, a.StateProvince, a.CountryRegion, h.ShipMethod, 
+h.SubTotal, h.TaxAmt, h.Freight, h.TotalDue
+from SalesLT.SalesOrderHeader h
+inner join SalesLT.Address a
+	on a.AddressID = h.ShipToAddressID
 
+------------------- fact sales order detail ----------------
+select 
 
 /*
 tarea moral:
