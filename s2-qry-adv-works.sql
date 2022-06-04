@@ -1,5 +1,11 @@
+------------ dim product ---------------
 use AdventureWorksLT2019
-select  pm.Name as ProductModel, ppc.Name as ParentProductCategory, pc.Name as CategoryName, p.ProductID, p.Name, p.Color, p.ListPrice from SalesLT.Product as p
+select  pm.Name as ProductModel, ppc.Name as ParentProductCategory, pc.Name as CategoryName, 
+p.ProductID, p.Name, p.Color, p.ListPrice, p.StandardCost, p.Size, p.Weight,
+p.SellStartDate, p.SellEndDate, p.DiscontinuedDate,
+'' as EstratoCost, '' as EstratoPrice
+--into DimProduct
+from SalesLT.Product as p
 inner join SalesLT.ProductCategory pc
 	on pc.ProductCategoryID = p.ProductCategoryID
 inner join SalesLT.ProductCategory ppc
@@ -8,6 +14,25 @@ inner join SalesLT.ProductModel pm
 	on pm.ProductModelID = p.ProductModelID
 where p.Color like '%e'
 order by p.ListPrice desc
+
+
+------------- dim customer -----------------
+use AdventureWorksLT2019
+select max (ca.AddressType), c.CustomerID, c.FirstName + ' ' + c.LastName as SingleFirstNameLastName
+, c.LastName + ', ' + c.FirstName as SingleLastNameFirstName
+, c.CompanyName, a.City, a.StateProvince, a.CountryRegion
+--into DimCustomer
+from SalesLT.Customer c
+inner join SalesLT.CustomerAddress ca
+	on c.CustomerID = ca.CustomerID
+inner join SalesLT.Address a
+	on a.AddressID = ca.AddressID
+group by
+	c.CustomerID, c.FirstName + ' ' + c.LastName 
+	, c.LastName + ', ' + c.FirstName
+	, c.CompanyName, a.City, a.StateProvince, a.CountryRegion
+
+-------------------- fact sales order header ----------------
 
 
 /*
