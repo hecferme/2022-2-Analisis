@@ -48,7 +48,15 @@ inner join SalesLT.Address a
 	on a.AddressID = h.ShipToAddressID
 
 ------------------- fact sales order detail ----------------
+use AdventureWorksLT2019
 select 
+d.SalesOrderID, d.ProductID, d.UnitPrice, d.OrderQty, 
+d.UnitPriceDiscount * 100 as DiscountPercentage, 
+d.UnitPriceDiscount * d.UnitPrice as UnitDiscount,
+d.UnitPrice * d.OrderQty as PreviousTotal,
+d.UnitPriceDiscount * d.UnitPrice * d.OrderQty as TotalDiscount
+,d.LineTotal
+from SalesLT.SalesOrderDetail d 
 
 /*
 tarea moral:
