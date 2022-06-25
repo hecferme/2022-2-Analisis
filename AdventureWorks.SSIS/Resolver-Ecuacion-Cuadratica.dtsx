@@ -1,0 +1,50 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/25/2022 9:30:14 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ULAT-SP-LB6-PR"
+  DTS:CreatorName="ULATINA0\laboratorio"
+  DTS:DTSID="{83A9FDF9-CC3F-4822-B5A2-850C35D3144F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.521.0"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{5E34EC3C-E62A-42E5-9D12-575543B91E01}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables />
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <AnnotationLayout
+          Text="Haga un paquete que reciba 3 parámetros del tipo con decimales y resuelva una ecuación de segundo grado de la forma ax^2+bx+c=0"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="747,60"
+          Id="484aa2d1-f0c6-4953-983e-326dd84b3528"
+          TopLeft="268,35" />
+        <AnnotationLayout
+          Text="Debe tener como salidas &#xD;&#xA;* un valor de resultado que se interpreta así:&#xD;&#xA;0 significa SIN ERRORES&#xD;&#xA;1 significa a = 0&#xD;&#xA;2 significa discriminante negativo&#xD;&#xA;&#xD;&#xA;* los dos valores resultantes de la ecuación"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="263,136"
+          Id="16187be5-bda4-4724-a020-b730cb112f54"
+          TopLeft="420,116" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
