@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.32510.428
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "AdventureWorks.OLAP", "AdventureWorks.OLAP\AdventureWorks.OLAP.dwproj", "{6334E4F9-A1BD-49D8-A68C-A7D5C0723E9F}"
 EndProject
-Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "AdventureWorks.SSIS", "AdventureWorks.SSIS\AdventureWorks.SSIS.dtproj", "{3707C4A2-C048-45C4-8AF8-CDCA38CD298A}"
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "AdventureWorks.SSIS.Recharged", "AdventureWorks.SSIS.Recharged\AdventureWorks.SSIS.Recharged.dtproj", "{8EC0C0E8-D0F1-48AD-882D-6CC7735D3322}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +15,8 @@ Global
 		{6334E4F9-A1BD-49D8-A68C-A7D5C0723E9F}.Development|Default.ActiveCfg = Development
 		{6334E4F9-A1BD-49D8-A68C-A7D5C0723E9F}.Development|Default.Build.0 = Development
 		{6334E4F9-A1BD-49D8-A68C-A7D5C0723E9F}.Development|Default.Deploy.0 = Development
-		{3707C4A2-C048-45C4-8AF8-CDCA38CD298A}.Development|Default.ActiveCfg = Development
-		{3707C4A2-C048-45C4-8AF8-CDCA38CD298A}.Development|Default.Build.0 = Development
+		{8EC0C0E8-D0F1-48AD-882D-6CC7735D3322}.Development|Default.ActiveCfg = Development
+		{8EC0C0E8-D0F1-48AD-882D-6CC7735D3322}.Development|Default.Build.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

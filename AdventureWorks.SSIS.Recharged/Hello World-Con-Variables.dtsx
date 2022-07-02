@@ -1,0 +1,173 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/25/2022 8:45:34 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ULAT-SP-LB6-PR"
+  DTS:CreatorName="ULATINA0\laboratorio"
+  DTS:DTSID="{591DA6E9-022B-462A-8945-125437BAAB84}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{52904797-162E-40B4-A962-A7CDCA19A287}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:Description="El nombre para el mensaje de Hello World"
+      DTS:DTSID="{6EE7F5CE-893B-4E56-B57F-7E8C748A8C29}"
+      DTS:ObjectName="p_MiNombre">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Héctor</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{98A4E8B2-8AE1-4179-B699-008263056317}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="HileraResultado">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0019264E-2383-4CF1-914F-25E3D9ED07DC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LargoHilera">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Hello world con variables"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{A2259ADB-99A1-4DB3-80FF-E5AAC7749B9C}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Hello world con variables"
+      DTS:ThreadHint="0">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{1D30B158-25EB-409B-9CB8-499A2B219508}"
+          DTS:EvaluateAsExpression="True"
+          DTS:Expression="UPPER( @[$Package::p_MiNombre]  )"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="MiNombre">
+          <DTS:VariableValue
+            DTS:DataType="8">HÉCTOR</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_841584dd346b457eb18585638e7fe17c"
+          VSTAMajorVersion="15"
+          VSTAMinorVersion="0"
+          Language="VisualBasic" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Pausa"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{A212A403-8ED3-44BB-B7CA-E0B31164C570}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Pausa"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{970E942C-08D7-4F1E-8662-16B929E6FDEC}"
+      DTS:From="Package\Hello world con variables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Pausa" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="197.333333333334,42"
+          Id="Package\Hello world con variables"
+          TopLeft="255,79" />
+        <NodeLayout
+          Size="106.666666666667,42"
+          Id="Package\Pausa"
+          TopLeft="287.142857142857,162.142857142857" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="353.5,121">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.8571428571428,41.1428571428571"
+              Start="0,0"
+              End="-12.8571428571428,33.6428571428571">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5714285714286" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5714285714286"
+                    Point2="0,20.5714285714286"
+                    Point3="-4,20.5714285714286" />
+                  <mssgle:LineSegment
+                    End="-8.85714285714283,20.5714285714286" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.85714285714283,20.5714285714286"
+                    Point2="-12.8571428571428,20.5714285714286"
+                    Point3="-12.8571428571428,24.5714285714286" />
+                  <mssgle:LineSegment
+                    End="-12.8571428571428,33.6428571428571" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Este paquete toma una variable con el nombre del usuario y genera una hilera de salida&#xA;con el mensaje Hello World, &lt;usuario&gt;"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="492,56"
+          Id="2173b5ee-58a5-431e-ac98-1be3c299e2ac"
+          TopLeft="105,32.1428571428571" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
