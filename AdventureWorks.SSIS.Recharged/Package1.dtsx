@@ -7,24 +7,202 @@
   DTS:CreatorName="PDC-ATLANTIDA\FERNANDEZMH"
   DTS:DTSID="{65439E56-122D-43A7-9023-C0AF8AE408C9}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LastModifiedProductVersion="16.0.521.0"
   DTS:LocaleID="2057"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{71AD104E-7B39-470A-B477-8D338B17BE38}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{1DD0373B-C1C6-4A71-8F67-FB02F24DC544}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2ABF1F8A-F070-441C-BB5C-F500CD99C671}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="a">
+      <DTS:VariableValue
+        DTS:DataType="5">2.</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C5379964-F6F0-4515-9AAF-DE0D387FA0FB}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="b">
+      <DTS:VariableValue
+        DTS:DataType="5">5.</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F3A2B776-F634-4DD8-AAA8-4FC7DBD9F82C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="c">
+      <DTS:VariableValue
+        DTS:DataType="5">2.</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4AE747E4-A1AE-4EDD-B3DC-63DE109062C0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="disc">
+      <DTS:VariableValue
+        DTS:DataType="5">0.</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8C43E13B-1DF5-4798-8F6A-D5AB2DE99CA7}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="x1">
+      <DTS:VariableValue
+        DTS:DataType="5">0.</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{72AEF237-5045-4EAA-9FF1-FC2FC53ED63B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="x2">
+      <DTS:VariableValue
+        DTS:DataType="5">0.</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Data Flow Task"
+      DTS:refId="Package\Calcular 1 solución"
+      DTS:CreationName="Microsoft.ExpressionTask"
+      DTS:Description="Expression Task"
+      DTS:DTSID="{7AC885AD-E95E-4823-9B2F-AB2C323D7070}"
+      DTS:ExecutableType="Microsoft.ExpressionTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Calcular 1 solución"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExpressionTask
+          Expression="@[User::x1]=((-1* @[User::b])+( SQRT( @[User::disc]  ))) / (2 * @[User::a] )" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Calcular 2 soluciones"
+      DTS:CreationName="Microsoft.ExpressionTask"
+      DTS:Description="Expression Task"
+      DTS:DTSID="{3A83DC64-E4ED-43B4-86D7-E7129392B605}"
+      DTS:ExecutableType="Microsoft.ExpressionTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Calcular 2 soluciones"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExpressionTask
+          Expression="@[User::x1]=((-1* @[User::b])+( SQRT( @[User::disc]  ))) / (2 * @[User::a] )" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Calcular discriminante"
+      DTS:CreationName="Microsoft.ExpressionTask"
+      DTS:Description="Expression Task"
+      DTS:DTSID="{4C54BCD9-63B9-4B51-A64A-BC714F536B15}"
+      DTS:ExecutableType="Microsoft.ExpressionTask"
+      DTS:ForceExecutionResult="0"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Calcular discriminante"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExpressionTask
+          Expression="@[User::disc]  = @[User::b] * @[User::b]  - 4 * @[User::a] * @[User::c]" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Discriminante negativo"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{927888E2-3E7E-433B-B82B-BCC87CF96CD4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:ForceExecutionResult="1"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Discriminante negativo"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Error -- a es cero"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{4BBF5EEE-DF54-44B7-A5C4-23F5E39898E2}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:ForceExecutionResult="1"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Error -- a es cero"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Evalúe el tipo de solución"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3A195AD2-4855-4956-A712-75603FE51F87}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Evalúe el tipo de solución"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Resultado dos soluciones"
+      DTS:CreationName="Microsoft.ExpressionTask"
+      DTS:Description="Expression Task"
+      DTS:DTSID="{2E3FF0EA-1F89-4FE0-9A88-A8A5FC1B86A9}"
+      DTS:ExecutableType="Microsoft.ExpressionTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Resultado dos soluciones"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExpressionTask
+          Expression="@[User::x2]=((-1* @[User::b])-( SQRT( @[User::disc]  ))) / (2 * @[User::a] )" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Resultado una solución"
+      DTS:CreationName="Microsoft.ExpressionTask"
+      DTS:Description="Expression Task"
+      DTS:DTSID="{D269797E-F2B4-4EA0-B034-5463D5E927BC}"
+      DTS:ExecutableType="Microsoft.ExpressionTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Resultado una solución"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExpressionTask
+          Expression="@[User::x2] =  @[User::x1]" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Validar si a es cero"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{B2E8FEAD-9644-47BD-BF45-55BA6A660611}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Data Flow Task"
+      DTS:ObjectName="Validar si a es cero"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -33,6 +211,80 @@
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{D3838517-BA7A-4844-A934-EB9367935FD3}"
+      DTS:EvalOp="1"
+      DTS:Expression="@[User::a] ==0"
+      DTS:From="Package\Validar si a es cero"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Error -- a es cero" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{238C1FBE-05E9-4431-9B7A-5D446CD0367E}"
+      DTS:EvalOp="1"
+      DTS:Expression="@[User::a] !=0"
+      DTS:From="Package\Validar si a es cero"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Calcular discriminante" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{C656DB51-2A15-4D98-B926-0E646895C8A1}"
+      DTS:From="Package\Calcular discriminante"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Evalúe el tipo de solución" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{D05E43BA-C2E9-4867-B637-CB11BDBEBF7B}"
+      DTS:EvalOp="1"
+      DTS:Expression="@[User::disc] &lt;0"
+      DTS:From="Package\Evalúe el tipo de solución"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Discriminante negativo" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{7E6FF044-B643-44AA-8108-C598CDA81590}"
+      DTS:EvalOp="1"
+      DTS:Expression="@[User::disc] ==0"
+      DTS:From="Package\Evalúe el tipo de solución"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Calcular 1 solución" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{C2DE6C8C-7757-4940-979A-0D41A9976F89}"
+      DTS:From="Package\Calcular 1 solución"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Resultado una solución" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{7EC37B1A-EC09-49FA-B2BB-B4C506AD0328}"
+      DTS:From="Package\Evalúe el tipo de solución"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Calcular 2 soluciones" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{D141F4B3-DB1F-409C-AAE3-ECFBADFF366F}"
+      DTS:From="Package\Calcular 2 soluciones"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\Resultado dos soluciones" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -44,18 +296,282 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Validar si a es cero"
+          TopLeft="177.999997839332,173.816661889653" />
         <AnnotationLayout
-          Text="Haga un paquete en integration services que se comporte de la siguiente forma:&#xD;&#xA;* mediante un DFT valida si a = 0&#xD;&#xA;* mediante un DFT calcula si el discriminante es &lt; 0, en cuyo caso queda en un estado de error&#xD;&#xA;* mediante un DFT calcula si el discriminante es = 0&#xD;&#xA;    * si es cero, calcula el valor de x1 y x2 y queda en un estado de resultado único&#xD;&#xA;    * de otro modo, calcula el valor de x1 y x2 y queda en un estado de resultado múltiple&#xA;"
+          Text="Haga un paquete en integration services que se comporte de la siguiente forma:&#xA;* mediante un DFT valida si a = 0&#xA;* mediante un DFT calcula si el discriminante es &lt; 0, en cuyo caso queda en un estado de error&#xA;* mediante un DFT calcula si el discriminante es = 0&#xA;    * si es cero, calcula el valor de x1 y x2 y queda en un estado de resultado único&#xA;    * de otro modo, calcula el valor de x1 y x2 y queda en un estado de resultado múltiple&#xA;"
           ParentId="Package"
           FontInfo="{assembly:Null}"
           Size="530,136"
           Id="4f5dc4e8-9814-4fb0-a4e5-09e36d142470"
-          TopLeft="307.499995417893,139.099997512698" />
+          TopLeft="305.833328751226,14.9333308460313" />
         <NodeLayout
-          Size="152,42.6666666666667"
-          Id="Package\Data Flow Task"
-          TopLeft="144.999997839332,267.149995222986" />
+          Size="160,42"
+          Id="Package\Error -- a es cero"
+          TopLeft="572.5,177.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="345.999997839332,196.658330944826">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="226.500002160668,0"
+              Start="0,0"
+              End="219.000002160668,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="219.000002160668,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="101.500001080334,5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Calcular discriminante"
+          TopLeft="185.833333333333,307.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="261.999997839332,215.816661889653">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.8333354940014,91.6833381103474"
+              Start="0,0"
+              End="14.8333354940014,84.1833381103474">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.8416690551737" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.8416690551737"
+                    Point2="0,45.8416690551737"
+                    Point3="4,45.8416690551737" />
+                  <mssgle:LineSegment
+                    End="10.8333354940014,45.8416690551737" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.8333354940014,45.8416690551737"
+                    Point2="14.8333354940014,45.8416690551737"
+                    Point3="14.8333354940014,49.8416690551737" />
+                  <mssgle:LineSegment
+                    End="14.8333354940014,84.1833381103474" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-0.583332252999298,50.8416690551737,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Evalúe el tipo de solución"
+          TopLeft="183.333333333333,408.333333333333" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="279.833333333333,349.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58.8333333333333"
+              Start="0,0"
+              End="0,51.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Discriminante negativo"
+          TopLeft="599.166666666667,245" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="314.666666666667,408.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="377.5,-121.333333333333"
+              Start="0,0"
+              End="377.5,-113.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-45.1139913592556" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-45.1139913592556"
+                    Point2="0,-49.1139913592556"
+                    Point3="4,-49.1139913592556" />
+                  <mssgle:LineSegment
+                    End="373.5,-49.1139913592556" />
+                  <mssgle:CubicBezierSegment
+                    Point1="373.5,-49.1139913592556"
+                    Point2="377.5,-49.1139913592556"
+                    Point3="377.5,-53.1139913592556" />
+                  <mssgle:LineSegment
+                    End="377.5,-113.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="180.75,-44.1139913592556,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Calcular 1 solución"
+          TopLeft="548.333333333333,393.333333333333" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="382.333333333333,429.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="166,-14.9999999999999"
+              Start="0,0"
+              End="158.5,-14.9999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="79,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="79,0"
+                    Point2="83,0"
+                    Point3="83,-4" />
+                  <mssgle:LineSegment
+                    End="83,-10.9999999999999" />
+                  <mssgle:CubicBezierSegment
+                    Point1="83,-10.9999999999999"
+                    Point2="83,-14.9999999999999"
+                    Point3="87,-14.9999999999999" />
+                  <mssgle:LineSegment
+                    End="158.5,-14.9999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="75,1,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Resultado una solución"
+          TopLeft="813.333333333333,395" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="715.333333333333,415.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="97.9999999999999,0"
+              Start="0,0"
+              End="90.4999999999999,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="90.4999999999999,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Calcular 2 soluciones"
+          TopLeft="203.333333333333,527.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="282.833333333333,450.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9,77.1666666666666"
+              Start="0,0"
+              End="9,69.6666666666666">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5833333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.5833333333333"
+                    Point2="0,38.5833333333333"
+                    Point3="4,38.5833333333333" />
+                  <mssgle:LineSegment
+                    End="5,38.5833333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5,38.5833333333333"
+                    Point2="9,38.5833333333333"
+                    Point3="9,42.5833333333333" />
+                  <mssgle:LineSegment
+                    End="9,69.6666666666666" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Resultado dos soluciones"
+          TopLeft="870.833333333333,531.666666666667" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="380.333333333333,550.583333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="490.5,0"
+              Start="0,0"
+              End="483,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="483,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
