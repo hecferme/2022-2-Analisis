@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="FERNANDEZMH-P"
   DTS:CreatorName="PDC-ATLANTIDA\FERNANDEZMH"
-  DTS:DTSID="{65439E56-122D-43A7-9023-C0AF8AE408C9}"
+  DTS:DTSID="{72DB4432-6B86-416E-808E-8E593A16CF49}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.521.0"
   DTS:LocaleID="2057"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="Resolver-Cuadratica-Workflow"
   DTS:PackageType="5"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{1DD0373B-C1C6-4A71-8F67-FB02F24DC544}">
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{27619372-DC35-44BC-80B7-5F1E627346E2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -80,7 +80,7 @@
       DTS:ExecutableType="Microsoft.ExpressionTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Calcular 1 solución"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <ExpressionTask
@@ -95,7 +95,7 @@
       DTS:ExecutableType="Microsoft.ExpressionTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Calcular 2 soluciones"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <ExpressionTask
@@ -173,7 +173,7 @@
       DTS:ExecutableType="Microsoft.ExpressionTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Resultado dos soluciones"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <ExpressionTask
@@ -188,7 +188,7 @@
       DTS:ExecutableType="Microsoft.ExpressionTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Resultado una solución"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <ExpressionTask
@@ -296,22 +296,43 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="168,42"
-          Id="Package\Validar si a es cero"
-          TopLeft="177.999997839332,173.816661889653" />
-        <AnnotationLayout
-          Text="Haga un paquete en integration services que se comporte de la siguiente forma:&#xA;* mediante un DFT valida si a = 0&#xA;* mediante un DFT calcula si el discriminante es &lt; 0, en cuyo caso queda en un estado de error&#xA;* mediante un DFT calcula si el discriminante es = 0&#xA;    * si es cero, calcula el valor de x1 y x2 y queda en un estado de resultado único&#xA;    * de otro modo, calcula el valor de x1 y x2 y queda en un estado de resultado múltiple&#xA;"
-          ParentId="Package"
-          FontInfo="{assembly:Null}"
-          Size="530,136"
-          Id="4f5dc4e8-9814-4fb0-a4e5-09e36d142470"
-          TopLeft="305.833328751226,14.9333308460313" />
+          Size="167,42"
+          Id="Package\Calcular 1 solución"
+          TopLeft="548.333333333333,393.333333333333" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Calcular 2 soluciones"
+          TopLeft="203.333333333333,527.5" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Calcular discriminante"
+          TopLeft="185.833333333333,307.5" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Discriminante negativo"
+          TopLeft="599.166666666667,245" />
         <NodeLayout
           Size="160,42"
           Id="Package\Error -- a es cero"
           TopLeft="572.5,177.5" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Evalúe el tipo de solución"
+          TopLeft="183.333333333333,408.333333333333" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Resultado dos soluciones"
+          TopLeft="870.833333333333,531.666666666667" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Resultado una solución"
+          TopLeft="813.333333333333,395" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Validar si a es cero"
+          TopLeft="177.999997839332,173.816661889653" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="345.999997839332,196.658330944826">
@@ -336,10 +357,6 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="182,42"
-          Id="Package\Calcular discriminante"
-          TopLeft="185.833333333333,307.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="261.999997839332,215.816661889653">
@@ -376,10 +393,6 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="199,42"
-          Id="Package\Evalúe el tipo de solución"
-          TopLeft="183.333333333333,408.333333333333" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="279.833333333333,349.5">
@@ -402,10 +415,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="186,42"
-          Id="Package\Discriminante negativo"
-          TopLeft="599.166666666667,245" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="314.666666666667,408.333333333333">
@@ -442,10 +451,6 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="167,42"
-          Id="Package\Calcular 1 solución"
-          TopLeft="548.333333333333,393.333333333333" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="382.333333333333,429.333333333333">
@@ -482,10 +487,6 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="187,42"
-          Id="Package\Resultado una solución"
-          TopLeft="813.333333333333,395" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
           TopLeft="715.333333333333,415.166666666667">
@@ -508,10 +509,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="177,42"
-          Id="Package\Calcular 2 soluciones"
-          TopLeft="203.333333333333,527.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
           TopLeft="282.833333333333,450.333333333333">
@@ -546,10 +543,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="197,42"
-          Id="Package\Resultado dos soluciones"
-          TopLeft="870.833333333333,531.666666666667" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
           TopLeft="380.333333333333,550.583333333333">
@@ -572,6 +565,13 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <AnnotationLayout
+          Text="Haga un paquete en integration services que se comporte de la siguiente forma:&#xA;* mediante un DFT valida si a = 0&#xA;* mediante un DFT calcula si el discriminante es &lt; 0, en cuyo caso queda en un estado de error&#xA;* mediante un DFT calcula si el discriminante es = 0&#xA;    * si es cero, calcula el valor de x1 y x2 y queda en un estado de resultado único&#xA;    * de otro modo, calcula el valor de x1 y x2 y queda en un estado de resultado múltiple&#xA;"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="530,136"
+          Id="4f5dc4e8-9814-4fb0-a4e5-09e36d142470"
+          TopLeft="305.833328751226,14.9333308460313" />
       </GraphLayout>
     </LayoutInfo>
   </Package>

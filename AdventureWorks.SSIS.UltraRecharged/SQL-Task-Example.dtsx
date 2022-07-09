@@ -1,0 +1,231 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/9/2022 8:53:59 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ULAT-SP-LB6-PR"
+  DTS:CreatorName="ULATINA0\laboratorio"
+  DTS:DTSID="{DEFE3B86-590E-4416-856F-737D27F74358}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.521.0"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{C3CE5C2C-69B8-400E-B5DC-CECD143163AC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MyAdventureWorks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5732A05B-32CA-4908-A186-289AFE35249B}"
+      DTS:ObjectName="MyAdventureWorks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(local)\TEST;Initial Catalog=AdventureWorksLT2019;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4DBA54B6-2C26-446D-B1FE-5659AC93696D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="MayorOMenor">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F6CABC15-584B-48CF-929D-E76CADEFADDF}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="MiColorDeProducto">
+      <DTS:VariableValue
+        DTS:DataType="8">'Blue'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{805F65A3-4604-411C-B1F5-60F949037743}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="MiEstatutoSQL">
+      <DTS:VariableValue
+        DTS:DataType="8">if OBJECT_ID('dbo.HolaMundo', 'U') is not null 	drop table %; go create table % (a varchar(10) primary key, b int);</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B8EDF84E-3506-4CD5-8998-16E4AFB3DB5A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="MiListPrice">
+      <DTS:VariableValue
+        DTS:DataType="14">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FCE63396-475C-4C8A-96D8-E3E4014A6930}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="MiProductName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Devuelve Una Linea"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{BC958A94-8DA2-4D7E-8E38-530A69DDB7AC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Devuelve Una Linea"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022 CTP2.0; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5732A05B-32CA-4908-A186-289AFE35249B}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="declare @miColor as varchar (20) = 'Blue'&#xA;declare @esElMasBajo as bit = 0&#xA;select top 1 &#xA;case @esElMasBajo&#xA;&#x9;when 1 then min (p.ListPrice)&#xA;&#x9;else max (p.ListPrice)&#xA;end as MinMaxListPrice, NEWID() as GlobalID, p.Name as ProductName from SalesLT.Product p&#xA;where p.Color =  @miColor&#xA;group by p.Name&#xA;order by MinMaxListPrice desc, GlobalID asc;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="MinMaxListPrice"
+            SQLTask:DtsVariableName="User::MiListPrice" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="ProductName"
+            SQLTask:DtsVariableName="User::MiProductName" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::MayorOMenor"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="2"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::MiColorDeProducto"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\No devuelve nada"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{B2C333B6-B4E6-40C9-B678-4BDD1AFE9677}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="No devuelve nada"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022 CTP2.0; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5732A05B-32CA-4908-A186-289AFE35249B}"
+          SQLTask:SqlStatementSource="if OBJECT_ID('dbo.HolaMundo', 'U') is not null&#xA;&#x9;drop table HolaMundo;&#xA;go&#xA;create table HolaMundo (a varchar(10) primary key, b int)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\pausa"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{AA21827A-B409-46D4-AEB7-F2846379A380}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="pausa"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{E546D3C4-1A14-43F2-B521-6D8B15834256}"
+      DTS:From="Package\Devuelve Una Linea"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\pausa" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Devuelve Una Linea"
+          TopLeft="147.666666666667,105.5" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\No devuelve nada"
+          TopLeft="489.166666666667,89.6666666666667" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\pausa"
+          TopLeft="194.166666666667,195" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="233.666666666667,147.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14,47.5"
+              Start="0,0"
+              End="14,40">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.75"
+                    Point2="0,23.75"
+                    Point3="4,23.75" />
+                  <mssgle:LineSegment
+                    End="10,23.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10,23.75"
+                    Point2="14,23.75"
+                    Point3="14,27.75" />
+                  <mssgle:LineSegment
+                    End="14,40" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Haga un sql task que reciba por parámetro un nombre de color y que devuelva el precio más grande (o el más bajo) y el nombre del artículo"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="771,40"
+          Id="36b3fe5e-65b2-4d56-9d15-46297937fc75"
+          TopLeft="99.8333333333333,2.83333333333329" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
