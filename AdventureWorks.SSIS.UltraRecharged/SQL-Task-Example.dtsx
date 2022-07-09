@@ -11,21 +11,21 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="33"
-  DTS:VersionGUID="{C3CE5C2C-69B8-400E-B5DC-CECD143163AC}">
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{5FD0B0D0-987F-42E8-81C9-F706C0C6A34C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[MyAdventureWorks]"
+      DTS:refId="Package.ConnectionManagers[MiAdventureWorks]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{5732A05B-32CA-4908-A186-289AFE35249B}"
-      DTS:ObjectName="MyAdventureWorks">
+      DTS:DTSID="{585E937A-20CB-43A1-898B-BE8312E941BB}"
+      DTS:ObjectName="MiAdventureWorks">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=(local)\TEST;Initial Catalog=AdventureWorksLT2019;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=(local)\test;Initial Catalog=AdventureWorksLT2019;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -37,7 +37,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="MayorOMenor">
       <DTS:VariableValue
-        DTS:DataType="3">0</DTS:VariableValue>
+        DTS:DataType="3">1</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -46,7 +46,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="MiColorDeProducto">
       <DTS:VariableValue
-        DTS:DataType="8">'Blue'</DTS:VariableValue>
+        DTS:DataType="8">Blue</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -91,9 +91,9 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{5732A05B-32CA-4908-A186-289AFE35249B}"
+          SQLTask:Connection="{585E937A-20CB-43A1-898B-BE8312E941BB}"
           SQLTask:BypassPrepare="False"
-          SQLTask:SqlStatementSource="declare @miColor as varchar (20) = 'Blue'&#xA;declare @esElMasBajo as bit = 0&#xA;select top 1 &#xA;case @esElMasBajo&#xA;&#x9;when 1 then min (p.ListPrice)&#xA;&#x9;else max (p.ListPrice)&#xA;end as MinMaxListPrice, NEWID() as GlobalID, p.Name as ProductName from SalesLT.Product p&#xA;where p.Color =  @miColor&#xA;group by p.Name&#xA;order by MinMaxListPrice desc, GlobalID asc;"
+          SQLTask:SqlStatementSource="declare @miColor as varchar (20) = ?&#xA;declare @esElMasBajo as bit = ?&#xA;if @esElMasBajo = 0&#xA;&#x9;select top 1 &#xA;&#x9;&#x9;max (p.ListPrice) as MinMaxListPrice, NEWID() as GlobalID, p.Name as ProductName from SalesLT.Product p&#xA;&#x9;where p.Color =  @miColor&#xA;&#x9;group by p.Name&#xA;&#x9;order by MinMaxListPrice desc, GlobalID asc;&#xA;else&#xA;&#x9;select top 1 &#xA;&#x9;&#x9;min (p.ListPrice) as MinMaxListPrice, NEWID() as GlobalID, p.Name as ProductName from SalesLT.Product p&#xA;&#x9;where p.Color =  @miColor&#xA;&#x9;group by p.Name&#xA;&#x9;order by MinMaxListPrice asc, GlobalID asc;"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="MinMaxListPrice"
@@ -105,7 +105,7 @@
             SQLTask:ParameterName="1"
             SQLTask:DtsVariableName="User::MayorOMenor"
             SQLTask:ParameterDirection="Input"
-            SQLTask:DataType="2"
+            SQLTask:DataType="3"
             SQLTask:ParameterSize="-1" />
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
@@ -129,7 +129,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{5732A05B-32CA-4908-A186-289AFE35249B}"
+          SQLTask:Connection="{585E937A-20CB-43A1-898B-BE8312E941BB}"
           SQLTask:SqlStatementSource="if OBJECT_ID('dbo.HolaMundo', 'U') is not null&#xA;&#x9;drop table HolaMundo;&#xA;go&#xA;create table HolaMundo (a varchar(10) primary key, b int)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
