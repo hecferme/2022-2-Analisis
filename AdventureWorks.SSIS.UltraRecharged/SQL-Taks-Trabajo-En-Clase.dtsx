@@ -1,0 +1,43 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/16/2022 9:42:38 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ULAT-SP-LB6-PR"
+  DTS:CreatorName="ULATINA0\laboratorio"
+  DTS:DTSID="{F52AF4AA-BCD7-46BD-B519-3EBF6D310406}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.521.0"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{0A790FA9-7091-4356-90C8-9FA7D44CC55C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables />
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <AnnotationLayout
+          Text="Haga un paquete en SSIS que lea todas los encabezados de órdenes (SalesOrderHeader) que se encuentran en un intervalo &#xD;&#xA;de fechas predefinido y que, para cada una de las órdenes busque las líneas de detalle (SalesOrderDetail) cuya cantidad de &#xD;&#xA;artículos sea mayor o igual a una variable determinada y que guarde en una tabla llamada DetalleOrdenesCustom:&#xD;&#xA;- el número de la orden&#xD;&#xA;- el código del artítulo&#xD;&#xA;- el nombre del artículo&#xD;&#xA;- la cantidad de artículos"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="683,136"
+          Id="c8bec5e2-744f-4c2c-8026-3d94b8dece59"
+          TopLeft="184,68" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
