@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="aws-mysql.admin"
+  DTS:DTSID="{6548E30D-2CDB-4BC5-BE88-F0E0A08804BB}"
+  DTS:CreationName="ODBC">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="uid=admin;Dsn=aws-mysql;">
+      <DTS:Password
+        DTS:Name="pwd"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAJahoYxnoJkqk76ArlmX3sAAAAAACAAAAAAADZgAAwAAAABAAAAAd3REzWnuLuve4donENeBKAAAAAASAAACgAAAAEAAAAEGDD/ID6p2psgt3NRhnMyF4AAAA68fZUS/vdw0I05vn/EZlFHRPwzD0u0Nhg3KpKIG/dkyFw0sbJtyIHERQAUJrMo3FbKbV7p0Hfht+nXwFpqGMJrwhiXMb4Gjlz2b9PoYf1bR9J1MxBwy4+/jJQFTHDCxj43BQtutgB/CRzClOxOBKfavRWITEtOTqFAAAANrvwt+/6h7Zk9WwFCD3T2gX23iL</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
