@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="aws-mysql.analisis2022"
+  DTS:DTSID="{490CB277-7450-45BE-8358-7F8FE33DBF59}"
+  DTS:CreationName="ODBC">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="uid=analisis2022;Dsn=aws-mysql;">
+      <DTS:Password
+        DTS:Name="pwd"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAJahoYxnoJkqk76ArlmX3sAAAAAACAAAAAAADZgAAwAAAABAAAADyQTTXHzdKjLUYlt5n8n/NAAAAAASAAACgAAAAEAAAAGwKpdge/b/VxWPDpsEPTS+AAAAAUtjH73ClMFC0iSxfLN5mDWr+CEGymhiCuzHrL7Cmfx+h0dU+6aqX34lW/qAk0xweezJsM4znORKdVzjIyByAP/ucWG2mjam7h/RHxeRjdszZwSi9dLXHgOVA4uAFF0ddMSXKMlm8qWaKcUyQEPJy5UOXoq0aGAbFKZfF5baYOmYUAAAAmcsMsgvoGwbPAENcttLOLGxYwME=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

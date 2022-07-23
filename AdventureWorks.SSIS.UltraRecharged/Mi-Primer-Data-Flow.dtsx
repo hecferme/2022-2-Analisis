@@ -1,0 +1,533 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/23/2022 10:08:24 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ULAT-SP-LB6-PR"
+  DTS:CreatorName="ULATINA0\laboratorio"
+  DTS:DTSID="{42E4F318-C3D7-4EAE-87C2-A563A435E1FD}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.521.0"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{7385B646-D4E7-4F8E-9776-267EE2A86B2E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local)\test.AdventureWorksLT2019]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1290D7BF-4B4A-4E9D-8A2F-F94E504D8F06}"
+      DTS:ObjectName="(local)\test.AdventureWorksLT2019">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(local)\test;Initial Catalog=AdventureWorksLT2019;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[aws-mysql.analisis2022 1]"
+      DTS:CreationName="ADO.NET:System.Data.Odbc.OdbcConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{3DC88713-BEFF-4FC9-9726-D97F60BB45AE}"
+      DTS:ObjectName="aws-mysql.analisis2022 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="uid=analisis2022;Dsn=aws-mysql;">
+          <DTS:Password
+            DTS:Name="pwd"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAJahoYxnoJkqk76ArlmX3sAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAC06aAVvt/bmjR8iW8514rPAAAAAASAAACgAAAAEAAAAH3kw92eFfEpWZNPUoZaT+MoAAAAjQegwmXnKSYzvVlVJOBquMGaJMczU0vzx+Qn3/FXn/qUshOWDL5nUxQAAAD0yFY+fnX693XPc1Ex4Yu3BDZ5YQ</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Lectura de clientes de sakila"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{5579665A-365D-4105-97A3-1C15981CF2E7}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Lectura de clientes de sakila"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Lectura de clientes de sakila\Destino de SQL Server"
+              componentClassID="Microsoft.SQLServerDestination"
+              contactInfo="Destino de SQL Server;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;5"
+              description="Destino de SQL Server"
+              name="Destino de SQL Server"
+              version="5">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.String"
+                  description="El nombre del objeto de base de datos en el que copiar datos."
+                  expressionType="Notify"
+                  name="BulkInsertTableName">[SakilaCustomers]</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica que todas las restricciones del objeto de destino se comprueben durante la operación de copia de datos. Corresponde a la opción CHECK_CONSTRAINTS de inserción masiva."
+                  name="BulkInsertCheckConstraints">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número de la primera fila para copiar. Corresponde a la opción FIRSTROW de inserción masiva."
+                  expressionType="Notify"
+                  name="BulkInsertFirstRow">-1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica que todos los desencadenadores de inserción definidos en el objeto de destino se van a ejecutar durante la copia de datos. Corresponde a la opción FIRE_TRIGGERS de inserción masiva."
+                  name="BulkInsertFireTriggers">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Corresponde a la opción KEEPIDENTITY de inserción masiva."
+                  name="BulkInsertKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL copiado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="BulkInsertKeepNulls">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número de la última fila para copiar. Corresponde a la opción LASTROW de inserción masiva."
+                  expressionType="Notify"
+                  name="BulkInsertLastRow">-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número máximo de errores de sintaxis y de compilación que pueden producirse sin que se cancele la operación de copia. Cada fila que no se puede copiar se omite y se cuenta como un error. Corresponde a la opción MAXERRORS de inserción masiva."
+                  name="BulkInsertMaxErrors">-1</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica cómo se ordenan los datos que se van a copiar. Corresponde a la opción ORDER de inserción masiva."
+                  expressionType="Notify"
+                  name="BulkInsertOrder"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica que se adquiere un bloqueo de nivel de tabla durante toda la operación de copia de datos. Corresponde a la opción TABLOCK de inserción masiva."
+                  name="BulkInsertTablock">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica en segundos el tiempo de espera del adaptador de destino de SQL antes de desactivarse si no hay ningún dato disponible para la inserción. Un valor 0 de tiempo de espera indica que no se agotará el tiempo de espera del adaptador de destino de SQL."
+                  expressionType="Notify"
+                  name="Timeout">30</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos."
+                  name="MaxInsertCommitSize">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Lectura de clientes de sakila\Destino de SQL Server.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local)\test.AdventureWorksLT2019]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local)\test.AdventureWorksLT2019]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server]"
+                  hasSideEffects="true"
+                  name="Entrada de destino de SQL Server">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server].Columns[district]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="district"
+                      externalMetadataColumnId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server].ExternalColumns[District]"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].Columns[district]" />
+                    <inputColumn
+                      refId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="city"
+                      externalMetadataColumnId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server].ExternalColumns[City]"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].Columns[city]" />
+                    <inputColumn
+                      refId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="country"
+                      externalMetadataColumnId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server].ExternalColumns[Country]"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].Columns[country]" />
+                    <inputColumn
+                      refId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server].Columns[customer_id]"
+                      cachedDataType="i4"
+                      cachedName="customer_id"
+                      externalMetadataColumnId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server].ExternalColumns[CustomerId]"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].Columns[customer_id]" />
+                    <inputColumn
+                      refId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server].Columns[first_name]"
+                      cachedDataType="wstr"
+                      cachedLength="180"
+                      cachedName="first_name"
+                      externalMetadataColumnId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server].ExternalColumns[FirstName]"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].Columns[first_name]" />
+                    <inputColumn
+                      refId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server].Columns[last_name]"
+                      cachedDataType="wstr"
+                      cachedLength="180"
+                      cachedName="last_name"
+                      externalMetadataColumnId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server].ExternalColumns[LastName]"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].Columns[last_name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server].ExternalColumns[CustomerId]"
+                      dataType="i4"
+                      name="CustomerId" />
+                    <externalMetadataColumn
+                      refId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="180"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="180"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server].ExternalColumns[District]"
+                      dataType="wstr"
+                      length="80"
+                      name="District" />
+                    <externalMetadataColumn
+                      refId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="200"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="200"
+                      name="Country" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Lectura de clientes de sakila\leer customers"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="leer customers"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select 
+	c.customer_id,
+    c.first_name,
+    c.last_name,    a.district, ci.city, co.country
+ from sakila.customer c
+inner join sakila.address a
+	on a.address_id = c.address_id
+inner join sakila.city ci
+	on ci.city_id = a.city_id
+inner join sakila.country co
+	on co.country_id = ci.country_id;</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Lectura de clientes de sakila\leer customers.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[aws-mysql.analisis2022 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[aws-mysql.analisis2022 1]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].Columns[customer_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].ExternalColumns[customer_id]"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].Columns[customer_id]"
+                      name="customer_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].Columns[first_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].ExternalColumns[first_name]"
+                      length="180"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].Columns[first_name]"
+                      name="first_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].Columns[last_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].ExternalColumns[last_name]"
+                      length="180"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].Columns[last_name]"
+                      name="last_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].Columns[district]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].ExternalColumns[district]"
+                      length="80"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].Columns[district]"
+                      name="district"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].Columns[city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].ExternalColumns[city]"
+                      length="200"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].Columns[country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].ExternalColumns[country]"
+                      length="200"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].Columns[country]"
+                      name="country"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].ExternalColumns[customer_id]"
+                      dataType="i4"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].ExternalColumns[first_name]"
+                      dataType="wstr"
+                      length="180"
+                      name="first_name" />
+                    <externalMetadataColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].ExternalColumns[last_name]"
+                      dataType="wstr"
+                      length="180"
+                      name="last_name" />
+                    <externalMetadataColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].ExternalColumns[district]"
+                      dataType="wstr"
+                      length="80"
+                      name="district" />
+                    <externalMetadataColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="200"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output].ExternalColumns[country]"
+                      dataType="wstr"
+                      length="200"
+                      name="country" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Error Output].Columns[customer_id]"
+                      dataType="i4"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Error Output].Columns[customer_id]"
+                      name="customer_id" />
+                    <outputColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Error Output].Columns[first_name]"
+                      dataType="wstr"
+                      length="180"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Error Output].Columns[first_name]"
+                      name="first_name" />
+                    <outputColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Error Output].Columns[last_name]"
+                      dataType="wstr"
+                      length="180"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Error Output].Columns[last_name]"
+                      name="last_name" />
+                    <outputColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Error Output].Columns[district]"
+                      dataType="wstr"
+                      length="80"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Error Output].Columns[district]"
+                      name="district" />
+                    <outputColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Error Output].Columns[city]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Error Output].Columns[city]"
+                      name="city" />
+                    <outputColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Error Output].Columns[country]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Error Output].Columns[country]"
+                      name="country" />
+                    <outputColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Lectura de clientes de sakila.Paths[ADO NET Source Output]"
+              endId="Package\Lectura de clientes de sakila\Destino de SQL Server.Inputs[Entrada de destino de SQL Server]"
+              name="ADO NET Source Output"
+              startId="Package\Lectura de clientes de sakila\leer customers.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Lectura de clientes de sakila"
+          TopLeft="538,105" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Lectura de clientes de sakila">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Lectura de clientes de sakila\Destino de SQL Server"
+          TopLeft="259,200" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Lectura de clientes de sakila\leer customers"
+          TopLeft="303,59" />
+        <EdgeLayout
+          Id="Package\Lectura de clientes de sakila.Paths[ADO NET Source Output]"
+          TopLeft="377,101">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-25.5,99"
+              Start="0,0"
+              End="-25.5,91.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.5"
+                    Point2="0,49.5"
+                    Point3="-4,49.5" />
+                  <mssgle:LineSegment
+                    End="-21.5,49.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-21.5,49.5"
+                    Point2="-25.5,49.5"
+                    Point3="-25.5,53.5" />
+                  <mssgle:LineSegment
+                    End="-25.5,91.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Lectura de clientes de sakila\Destino de SQL Server">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Lectura de clientes de sakila\leer customers">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
