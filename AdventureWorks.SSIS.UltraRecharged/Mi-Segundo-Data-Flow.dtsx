@@ -1,0 +1,2860 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/30/2022 8:10:56 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ULAT-SP-LB6-PR"
+  DTS:CreatorName="ULATINA0\laboratorio"
+  DTS:DTSID="{3C1DD005-2F5F-4BD4-90E8-A70C5DE84347}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.521.0"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{D5B90ADF-8D14-4282-98E2-A4937DF43E47}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local)\test.AdventureWorksLT2019]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2BE50A42-26CF-4C11-8A00-4FD8AF743D8A}"
+      DTS:ObjectName="(local)\test.AdventureWorksLT2019">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(local)\test;Initial Catalog=AdventureWorksLT2019;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost\test.DWAdventureWorksLT]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4D6CC91E-8778-40DA-B49C-7902AF7575F0}"
+      DTS:ObjectName="localhost\test.DWAdventureWorksLT">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost\test;Initial Catalog=DWAdventureWorksLT;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{16D4E677-8CAD-4F93-A69D-2FC19EF4623B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="TCEuro">
+      <DTS:VariableValue
+        DTS:DataType="5">1.75</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1A1174C5-D692-4B36-A3BD-E2096C57FC13}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="TCRupia">
+      <DTS:VariableValue
+        DTS:DataType="5">85.3299999999999983</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5A48BC08-84C5-4D8F-929E-DA9C64E0C8E0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="TCTalego">
+      <DTS:VariableValue
+        DTS:DataType="5">103.099999999999994</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Cargue los productos de ETL"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{06D2364F-350B-4304-A4D7-890405AB9900}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Cargue los productos de ETL"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Calcular intervalo de venta del producto"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Inputs[Entrada de columna derivada].Columns[SellStartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellStartDate"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellStartDate]" />
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Inputs[Entrada de columna derivada].Columns[SellEndDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellEndDate"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellEndDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Outputs[Salida de columna derivada].Columns[MesesEnElMercado]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Outputs[Salida de columna derivada].Columns[MesesEnElMercado]"
+                      name="MesesEnElMercado"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[ISNULL](#{Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellEndDate]}) ? -1 : [DATEDIFF]("MONTH",#{Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellStartDate]},#{Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellEndDate]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(SellEndDate) ? -1 : DATEDIFF("MONTH",SellStartDate,SellEndDate)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de las rupias"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Calcule el precio en dólares de las rupias"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de las rupias.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de las rupias.Inputs[Entrada de columna derivada].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ListPrice]" />
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de las rupias.Inputs[Entrada de columna derivada].Columns[DollarsUnitPrice]"
+                      cachedDataType="r8"
+                      cachedName="DollarsUnitPrice"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de columna derivada].Columns[DollarsUnitPrice]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">#{Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ListPrice]} * @[User::TCRupia]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ListPrice * @[User::TCRupia]</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de las rupias.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Cargue los productos de ETL\Calcule el precio en dólares de las rupias.Inputs[Entrada de columna derivada]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de las rupias.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Cargue los productos de ETL\Calcule el precio en dólares de las rupias.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de las rupias.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\Calcule el precio en dólares de las rupias.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de las rupias.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\Calcule el precio en dólares de las rupias.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los euros"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Calcule el precio en dólares de los euros"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los euros.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los euros.Inputs[Entrada de columna derivada].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ListPrice]" />
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los euros.Inputs[Entrada de columna derivada].Columns[DollarsUnitPrice]"
+                      cachedDataType="r8"
+                      cachedName="DollarsUnitPrice"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de columna derivada].Columns[DollarsUnitPrice]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">#{Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ListPrice]} * @[User::TCEuro]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ListPrice * @[User::TCEuro]</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los euros.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los euros.Inputs[Entrada de columna derivada]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los euros.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los euros.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los euros.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los euros.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los euros.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los euros.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los talegos"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Calcule el precio en dólares de los talegos"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los talegos.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los talegos.Inputs[Entrada de columna derivada].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ListPrice]" />
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los talegos.Inputs[Entrada de columna derivada].Columns[DollarsUnitPrice]"
+                      cachedDataType="r8"
+                      cachedName="DollarsUnitPrice"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de columna derivada].Columns[DollarsUnitPrice]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">#{Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ListPrice]} * @[User::TCTalego]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ListPrice * @[User::TCTalego]</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los talegos.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los talegos.Inputs[Entrada de columna derivada]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los talegos.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los talegos.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los talegos.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los talegos.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los talegos.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los talegos.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargue los productos de ETL\Calcule en precio en dólares de los dólares"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Calcule en precio en dólares de los dólares"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Cargue los productos de ETL\Calcule en precio en dólares de los dólares.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Calcule en precio en dólares de los dólares.Inputs[Entrada de columna derivada].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ListPrice]" />
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Calcule en precio en dólares de los dólares.Inputs[Entrada de columna derivada].Columns[DollarsUnitPrice]"
+                      cachedDataType="r8"
+                      cachedName="DollarsUnitPrice"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de columna derivada].Columns[DollarsUnitPrice]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">#{Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ListPrice]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ListPrice</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargue los productos de ETL\Calcule en precio en dólares de los dólares.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Cargue los productos de ETL\Calcule en precio en dólares de los dólares.Inputs[Entrada de columna derivada]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargue los productos de ETL\Calcule en precio en dólares de los dólares.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Cargue los productos de ETL\Calcule en precio en dólares de los dólares.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Calcule en precio en dólares de los dólares.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\Calcule en precio en dólares de los dólares.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Calcule en precio en dólares de los dólares.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\Calcule en precio en dólares de los dólares.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Cree la columna PrecioEnDolares"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de columna derivada].Columns[DollarsUnitPrice]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de columna derivada].Columns[DollarsUnitPrice]"
+                      name="DollarsUnitPrice"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargue los productos de ETL\División condicional"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="División condicional;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Enruta filas de datos a diferentes salidas según el contenido de los datos. Se usan condiciones (expresiones de SSIS) para especificar las filas que se van a enrutar. Por ejemplo, se usa para separar los registros que deben limpiarse de los registros listos para ser cargados o para enrutar solamente un subconjunto de registros."
+              name="División condicional"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Cargue los productos de ETL\División condicional.Inputs[Entrada de división condicional]"
+                  description="Entrada en la transformación División condicional"
+                  name="Entrada de división condicional">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\División condicional.Inputs[Entrada de división condicional].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Color]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargue los productos de ETL\División condicional.Outputs[Talegos]"
+                  description="Salida 3 de la transformación División condicional"
+                  errorOrTruncationOperation="Cálculo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Talegos"
+                  synchronousInputId="Package\Cargue los productos de ETL\División condicional.Inputs[Entrada de división condicional]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                      name="Expression">[ISNULL](#{Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Color]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(Color)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargue los productos de ETL\División condicional.Outputs[Rupias]"
+                  description="Salida 1 de la transformación División condicional"
+                  errorOrTruncationOperation="Cálculo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Rupias"
+                  synchronousInputId="Package\Cargue los productos de ETL\División condicional.Inputs[Entrada de división condicional]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                      name="Expression">(#{Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Color]} == "Blue") || (#{Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Color]} == "Yellow")</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">(Color == "Blue") || (Color == "Yellow")</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargue los productos de ETL\División condicional.Outputs[Euros]"
+                  description="Salida 2 de la transformación División condicional"
+                  errorOrTruncationOperation="Cálculo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Euros"
+                  synchronousInputId="Package\Cargue los productos de ETL\División condicional.Inputs[Entrada de división condicional]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                      name="Expression">#{Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Color]} == "Red"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Color == "Red"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                      name="EvaluationOrder">2</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargue los productos de ETL\División condicional.Outputs[Dolares]"
+                  description="Salida predeterminada de la transformación División condicional"
+                  exclusionGroup="1"
+                  name="Dolares"
+                  synchronousInputId="Package\Cargue los productos de ETL\División condicional.Inputs[Entrada de división condicional]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargue los productos de ETL\División condicional.Outputs[Salida de error de división condicional]"
+                  description="Salida de error de la transformación División condicional"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de división condicional"
+                  synchronousInputId="Package\Cargue los productos de ETL\División condicional.Inputs[Entrada de división condicional]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Unión de todo;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Combina las filas de varios flujos de datos sin ordenarlos. Por ejemplo, devuelve filas a un flujo de datos después de corregir los errores. Si el orden es importante, se recomienda usar la transformación Mezclar."
+              name="Enlace todos los flujos en un solo cauce"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1]"
+                  name="Entrada de Unión de todo 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Color]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Color]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[StandardCost]"
+                      cachedDataType="cy"
+                      cachedName="StandardCost"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[StandardCost]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[StandardCost]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ListPrice]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ListPrice]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[Size]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="Size"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Size]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Size]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[Weight]"
+                      cachedDataType="numeric"
+                      cachedName="Weight"
+                      cachedPrecision="8"
+                      cachedScale="2"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Weight]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Weight]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[SellStartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellStartDate"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellStartDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[SellStartDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[SellEndDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellEndDate"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellEndDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[SellEndDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[DiscontinuedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DiscontinuedDate"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[DiscontinuedDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[DiscontinuedDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[ProductCategoryName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductCategoryName"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductCategoryName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductCategoryName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[ProductModelName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductModelName"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductModelName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductModelName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[UppercaseProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="UppercaseProductName"
+                      lineageId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Outputs[Salida de columna derivada].Columns[UppercaseProductName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[UppercaseProductName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[MesesEnElMercado]"
+                      cachedDataType="i4"
+                      cachedName="MesesEnElMercado"
+                      lineageId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Outputs[Salida de columna derivada].Columns[MesesEnElMercado]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[MesesEnElMercado]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[DollarsUnitPrice]"
+                      cachedDataType="r8"
+                      cachedName="DollarsUnitPrice"
+                      lineageId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de columna derivada].Columns[DollarsUnitPrice]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[DollarsUnitPrice]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 2]"
+                  hasSideEffects="true"
+                  name="Entrada de Unión de todo 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 2].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 2].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 2].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Color]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Color]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 2].Columns[StandardCost]"
+                      cachedDataType="cy"
+                      cachedName="StandardCost"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[StandardCost]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[StandardCost]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 2].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ListPrice]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ListPrice]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 2].Columns[Size]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="Size"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Size]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Size]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 2].Columns[Weight]"
+                      cachedDataType="numeric"
+                      cachedName="Weight"
+                      cachedPrecision="8"
+                      cachedScale="2"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Weight]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Weight]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 2].Columns[SellStartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellStartDate"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellStartDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[SellStartDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 2].Columns[SellEndDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellEndDate"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellEndDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[SellEndDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 2].Columns[DiscontinuedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DiscontinuedDate"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[DiscontinuedDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[DiscontinuedDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 2].Columns[ProductCategoryName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductCategoryName"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductCategoryName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductCategoryName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 2].Columns[ProductModelName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductModelName"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductModelName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductModelName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 2].Columns[UppercaseProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="UppercaseProductName"
+                      lineageId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Outputs[Salida de columna derivada].Columns[UppercaseProductName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[UppercaseProductName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 2].Columns[MesesEnElMercado]"
+                      cachedDataType="i4"
+                      cachedName="MesesEnElMercado"
+                      lineageId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Outputs[Salida de columna derivada].Columns[MesesEnElMercado]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[MesesEnElMercado]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 2].Columns[DollarsUnitPrice]"
+                      cachedDataType="r8"
+                      cachedName="DollarsUnitPrice"
+                      lineageId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de columna derivada].Columns[DollarsUnitPrice]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[DollarsUnitPrice]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 3]"
+                  hasSideEffects="true"
+                  name="Entrada de Unión de todo 3">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 3].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 3].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 3].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Color]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Color]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 3].Columns[StandardCost]"
+                      cachedDataType="cy"
+                      cachedName="StandardCost"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[StandardCost]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[StandardCost]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 3].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ListPrice]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ListPrice]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 3].Columns[Size]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="Size"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Size]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Size]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 3].Columns[Weight]"
+                      cachedDataType="numeric"
+                      cachedName="Weight"
+                      cachedPrecision="8"
+                      cachedScale="2"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Weight]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Weight]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 3].Columns[SellStartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellStartDate"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellStartDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[SellStartDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 3].Columns[SellEndDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellEndDate"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellEndDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[SellEndDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 3].Columns[DiscontinuedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DiscontinuedDate"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[DiscontinuedDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[DiscontinuedDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 3].Columns[ProductCategoryName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductCategoryName"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductCategoryName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductCategoryName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 3].Columns[ProductModelName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductModelName"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductModelName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductModelName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 3].Columns[UppercaseProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="UppercaseProductName"
+                      lineageId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Outputs[Salida de columna derivada].Columns[UppercaseProductName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[UppercaseProductName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 3].Columns[MesesEnElMercado]"
+                      cachedDataType="i4"
+                      cachedName="MesesEnElMercado"
+                      lineageId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Outputs[Salida de columna derivada].Columns[MesesEnElMercado]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[MesesEnElMercado]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 3].Columns[DollarsUnitPrice]"
+                      cachedDataType="r8"
+                      cachedName="DollarsUnitPrice"
+                      lineageId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de columna derivada].Columns[DollarsUnitPrice]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[DollarsUnitPrice]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 4]"
+                  hasSideEffects="true"
+                  name="Entrada de Unión de todo 4">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 4].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 4].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 4].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Color]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Color]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 4].Columns[StandardCost]"
+                      cachedDataType="cy"
+                      cachedName="StandardCost"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[StandardCost]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[StandardCost]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 4].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ListPrice]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ListPrice]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 4].Columns[Size]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="Size"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Size]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Size]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 4].Columns[Weight]"
+                      cachedDataType="numeric"
+                      cachedName="Weight"
+                      cachedPrecision="8"
+                      cachedScale="2"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Weight]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Weight]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 4].Columns[SellStartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellStartDate"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellStartDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[SellStartDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 4].Columns[SellEndDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellEndDate"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellEndDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[SellEndDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 4].Columns[DiscontinuedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DiscontinuedDate"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[DiscontinuedDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[DiscontinuedDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 4].Columns[ProductCategoryName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductCategoryName"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductCategoryName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductCategoryName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 4].Columns[ProductModelName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductModelName"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductModelName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductModelName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 4].Columns[UppercaseProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="UppercaseProductName"
+                      lineageId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Outputs[Salida de columna derivada].Columns[UppercaseProductName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[UppercaseProductName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 4].Columns[MesesEnElMercado]"
+                      cachedDataType="i4"
+                      cachedName="MesesEnElMercado"
+                      lineageId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Outputs[Salida de columna derivada].Columns[MesesEnElMercado]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[MesesEnElMercado]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 4].Columns[DollarsUnitPrice]"
+                      cachedDataType="r8"
+                      cachedName="DollarsUnitPrice"
+                      lineageId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de columna derivada].Columns[DollarsUnitPrice]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[DollarsUnitPrice]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 5]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Entrada de Unión de todo 5">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1]"
+                  name="Salida de Unión de todo 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Color]"
+                      name="Color" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[StandardCost]"
+                      dataType="cy"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[StandardCost]"
+                      name="StandardCost" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ListPrice]"
+                      dataType="cy"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ListPrice]"
+                      name="ListPrice" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Size]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Size]"
+                      name="Size" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Weight]"
+                      dataType="numeric"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Weight]"
+                      name="Weight"
+                      precision="8"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[SellStartDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[SellStartDate]"
+                      name="SellStartDate" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[SellEndDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[SellEndDate]"
+                      name="SellEndDate" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[DiscontinuedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[DiscontinuedDate]"
+                      name="DiscontinuedDate" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductCategoryName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductCategoryName]"
+                      name="ProductCategoryName" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductModelName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductModelName]"
+                      name="ProductModelName" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[UppercaseProductName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[UppercaseProductName]"
+                      name="UppercaseProductName" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[MesesEnElMercado]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[MesesEnElMercado]"
+                      name="MesesEnElMercado" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[DollarsUnitPrice]"
+                      dataType="r8"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[DollarsUnitPrice]"
+                      name="DollarsUnitPrice" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargue los productos de ETL\Grabar Productos"
+              componentClassID="Microsoft.SQLServerDestination"
+              contactInfo="Destino de SQL Server;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;5"
+              description="Destino de SQL Server"
+              name="Grabar Productos"
+              version="5">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.String"
+                  description="El nombre del objeto de base de datos en el que copiar datos."
+                  expressionType="Notify"
+                  name="BulkInsertTableName">[ProductosETL]</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica que todas las restricciones del objeto de destino se comprueben durante la operación de copia de datos. Corresponde a la opción CHECK_CONSTRAINTS de inserción masiva."
+                  name="BulkInsertCheckConstraints">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número de la primera fila para copiar. Corresponde a la opción FIRSTROW de inserción masiva."
+                  expressionType="Notify"
+                  name="BulkInsertFirstRow">-1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica que todos los desencadenadores de inserción definidos en el objeto de destino se van a ejecutar durante la copia de datos. Corresponde a la opción FIRE_TRIGGERS de inserción masiva."
+                  name="BulkInsertFireTriggers">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Corresponde a la opción KEEPIDENTITY de inserción masiva."
+                  name="BulkInsertKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL copiado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="BulkInsertKeepNulls">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número de la última fila para copiar. Corresponde a la opción LASTROW de inserción masiva."
+                  expressionType="Notify"
+                  name="BulkInsertLastRow">-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número máximo de errores de sintaxis y de compilación que pueden producirse sin que se cancele la operación de copia. Cada fila que no se puede copiar se omite y se cuenta como un error. Corresponde a la opción MAXERRORS de inserción masiva."
+                  name="BulkInsertMaxErrors">-1</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica cómo se ordenan los datos que se van a copiar. Corresponde a la opción ORDER de inserción masiva."
+                  expressionType="Notify"
+                  name="BulkInsertOrder"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica que se adquiere un bloqueo de nivel de tabla durante toda la operación de copia de datos. Corresponde a la opción TABLOCK de inserción masiva."
+                  name="BulkInsertTablock">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica en segundos el tiempo de espera del adaptador de destino de SQL antes de desactivarse si no hay ningún dato disponible para la inserción. Un valor 0 de tiempo de espera indica que no se agotará el tiempo de espera del adaptador de destino de SQL."
+                  expressionType="Notify"
+                  name="Timeout">30</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos."
+                  name="MaxInsertCommitSize">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cargue los productos de ETL\Grabar Productos.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost\test.DWAdventureWorksLT]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost\test.DWAdventureWorksLT]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server]"
+                  hasSideEffects="true"
+                  name="Entrada de destino de SQL Server">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[ProductID]"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[Name]"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[Color]"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Color]" />
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].Columns[StandardCost]"
+                      cachedDataType="cy"
+                      cachedName="StandardCost"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[StandardCost]"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[StandardCost]" />
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[ListPrice]"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ListPrice]" />
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].Columns[Size]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="Size"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[Size]"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Size]" />
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].Columns[Weight]"
+                      cachedDataType="numeric"
+                      cachedName="Weight"
+                      cachedPrecision="8"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[Weight]"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Weight]" />
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].Columns[SellStartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellStartDate"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[SellStartDate]"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[SellStartDate]" />
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].Columns[SellEndDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellEndDate"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[SellEndDate]"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[SellEndDate]" />
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].Columns[DiscontinuedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DiscontinuedDate"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[DiscontinuedDate]"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[DiscontinuedDate]" />
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].Columns[ProductCategoryName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductCategoryName"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[ProductCategoryName]"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductCategoryName]" />
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].Columns[ProductModelName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductModelName"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[ProductModelName]"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductModelName]" />
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].Columns[UppercaseProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="UppercaseProductName"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[UppercaseProductName]"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[UppercaseProductName]" />
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].Columns[MesesEnElMercado]"
+                      cachedDataType="i4"
+                      cachedName="MesesEnElMercado"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[MesesEnElMercado]"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[MesesEnElMercado]" />
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].Columns[DollarsUnitPrice]"
+                      cachedDataType="r8"
+                      cachedName="DollarsUnitPrice"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[DollarsUnitPrice]"
+                      lineageId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[DollarsUnitPrice]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[StandardCost]"
+                      dataType="cy"
+                      name="StandardCost" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[ListPrice]"
+                      dataType="cy"
+                      name="ListPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[Size]"
+                      dataType="wstr"
+                      length="5"
+                      name="Size" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[Weight]"
+                      dataType="numeric"
+                      name="Weight"
+                      precision="8"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[SellStartDate]"
+                      dataType="dbTimeStamp"
+                      name="SellStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[SellEndDate]"
+                      dataType="dbTimeStamp"
+                      name="SellEndDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[DiscontinuedDate]"
+                      dataType="dbTimeStamp"
+                      name="DiscontinuedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[ProductCategoryName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductCategoryName" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[ProductModelName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductModelName" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[UppercaseProductName]"
+                      dataType="wstr"
+                      length="50"
+                      name="UppercaseProductName" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[MesesEnElMercado]"
+                      dataType="i4"
+                      name="MesesEnElMercado" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server].ExternalColumns[DollarsUnitPrice]"
+                      dataType="r8"
+                      name="DollarsUnitPrice" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Cargue los productos de ETL\Leer Products"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Leer Products"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        p.ProductID, p.Name, p.Color, p.StandardCost, p.ListPrice, p.[Size], p.Weight, p.SellStartDate, p.SellEndDate, p.DiscontinuedDate, c.Name AS ProductCategoryName, m.Name AS ProductModelName
+FROM            SalesLT.Product AS p INNER JOIN
+                         SalesLT.ProductCategory AS c ON p.ProductCategoryID = c.ProductCategoryID INNER JOIN
+                         SalesLT.ProductModel AS m ON p.ProductModelID = m.ProductModelID</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cargue los productos de ETL\Leer Products.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local)\test.AdventureWorksLT2019]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local)\test.AdventureWorksLT2019]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[ProductID]"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[Name]"
+                      length="50"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Color]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[Color]"
+                      length="15"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Color]"
+                      name="Color"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[StandardCost]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[StandardCost]"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[StandardCost]"
+                      name="StandardCost"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ListPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[ListPrice]"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ListPrice]"
+                      name="ListPrice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Size]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[Size]"
+                      length="5"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Size]"
+                      name="Size"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Weight]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[Weight]"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Weight]"
+                      name="Weight"
+                      precision="8"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellStartDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[SellStartDate]"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellStartDate]"
+                      name="SellStartDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellEndDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[SellEndDate]"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellEndDate]"
+                      name="SellEndDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[DiscontinuedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[DiscontinuedDate]"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[DiscontinuedDate]"
+                      name="DiscontinuedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductCategoryName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[ProductCategoryName]"
+                      length="50"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductCategoryName]"
+                      name="ProductCategoryName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductModelName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[ProductModelName]"
+                      length="50"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductModelName]"
+                      name="ProductModelName"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[StandardCost]"
+                      dataType="cy"
+                      name="StandardCost" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[ListPrice]"
+                      dataType="cy"
+                      name="ListPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[Size]"
+                      dataType="wstr"
+                      length="5"
+                      name="Size" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[Weight]"
+                      dataType="numeric"
+                      name="Weight"
+                      precision="8"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[SellStartDate]"
+                      dataType="dbTimeStamp"
+                      name="SellStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[SellEndDate]"
+                      dataType="dbTimeStamp"
+                      name="SellEndDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[DiscontinuedDate]"
+                      dataType="dbTimeStamp"
+                      name="DiscontinuedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[ProductCategoryName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductCategoryName" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].ExternalColumns[ProductModelName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductModelName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[Color]"
+                      name="Color" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[StandardCost]"
+                      dataType="cy"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[StandardCost]"
+                      name="StandardCost" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[ListPrice]"
+                      dataType="cy"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[ListPrice]"
+                      name="ListPrice" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[Size]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[Size]"
+                      name="Size" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[Weight]"
+                      dataType="numeric"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[Weight]"
+                      name="Weight"
+                      precision="8"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[SellStartDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[SellStartDate]"
+                      name="SellStartDate" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[SellEndDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[SellEndDate]"
+                      name="SellEndDate" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[DiscontinuedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[DiscontinuedDate]"
+                      name="DiscontinuedDate" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[ProductCategoryName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[ProductCategoryName]"
+                      name="ProductCategoryName" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[ProductModelName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[ProductModelName]"
+                      name="ProductModelName" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargue los productos de ETL\Pasar a mayúsculas"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Pasar a mayúsculas"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Inputs[Entrada de columna derivada].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Name]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Outputs[Salida de columna derivada].Columns[UppercaseProductName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Outputs[Salida de columna derivada].Columns[UppercaseProductName]"
+                      name="UppercaseProductName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[UPPER](#{Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Name]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">UPPER(Name)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Cargue los productos de ETL.Paths[Dolares]"
+              endId="Package\Cargue los productos de ETL\Calcule en precio en dólares de los dólares.Inputs[Entrada de columna derivada]"
+              name="Dolares"
+              startId="Package\Cargue los productos de ETL\División condicional.Outputs[Dolares]" />
+            <path
+              refId="Package\Cargue los productos de ETL.Paths[Euros]"
+              endId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los euros.Inputs[Entrada de columna derivada]"
+              name="Euros"
+              startId="Package\Cargue los productos de ETL\División condicional.Outputs[Euros]" />
+            <path
+              refId="Package\Cargue los productos de ETL.Paths[Rupias]"
+              endId="Package\Cargue los productos de ETL\Calcule el precio en dólares de las rupias.Inputs[Entrada de columna derivada]"
+              name="Rupias"
+              startId="Package\Cargue los productos de ETL\División condicional.Outputs[Rupias]" />
+            <path
+              refId="Package\Cargue los productos de ETL.Paths[Salida de columna derivada]"
+              endId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Inputs[Entrada de columna derivada]"
+              name="Salida de columna derivada"
+              startId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\Cargue los productos de ETL.Paths[Salida de columna derivada1]"
+              endId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Inputs[Entrada de columna derivada]"
+              name="Salida de columna derivada"
+              startId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\Cargue los productos de ETL.Paths[Salida de columna derivada2]"
+              endId="Package\Cargue los productos de ETL\División condicional.Inputs[Entrada de división condicional]"
+              name="Salida de columna derivada"
+              startId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\Cargue los productos de ETL.Paths[Salida de columna derivada3]"
+              endId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1]"
+              name="Salida de columna derivada"
+              startId="Package\Cargue los productos de ETL\Calcule el precio en dólares de las rupias.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\Cargue los productos de ETL.Paths[Salida de columna derivada4]"
+              endId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 2]"
+              name="Salida de columna derivada"
+              startId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los euros.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\Cargue los productos de ETL.Paths[Salida de columna derivada5]"
+              endId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 3]"
+              name="Salida de columna derivada"
+              startId="Package\Cargue los productos de ETL\Calcule en precio en dólares de los dólares.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\Cargue los productos de ETL.Paths[Salida de columna derivada6]"
+              endId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 4]"
+              name="Salida de columna derivada"
+              startId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los talegos.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\Cargue los productos de ETL.Paths[Salida de origen de OLE DB]"
+              endId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Inputs[Entrada de columna derivada]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB]" />
+            <path
+              refId="Package\Cargue los productos de ETL.Paths[Salida de Unión de todo 1]"
+              endId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server]"
+              name="Salida de Unión de todo 1"
+              startId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1]" />
+            <path
+              refId="Package\Cargue los productos de ETL.Paths[Talegos]"
+              endId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los talegos.Inputs[Entrada de columna derivada]"
+              name="Talegos"
+              startId="Package\Cargue los productos de ETL\División condicional.Outputs[Talegos]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Cargue los productos de ETL"
+          TopLeft="443,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Cargue los productos de ETL">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="280,42"
+          Id="Package\Cargue los productos de ETL\Calcule en precio en dólares de los dólares"
+          TopLeft="1073,487" />
+        <NodeLayout
+          Size="271,42"
+          Id="Package\Cargue los productos de ETL\Calcule el precio en dólares de las rupias"
+          TopLeft="326,513" />
+        <NodeLayout
+          Size="234,42"
+          Id="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares"
+          TopLeft="684,291" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Cargue los productos de ETL\Pasar a mayúsculas"
+          TopLeft="708,123" />
+        <NodeLayout
+          Size="143,42"
+          Id="Package\Cargue los productos de ETL\Leer Products"
+          TopLeft="724,38" />
+        <NodeLayout
+          Size="268,42"
+          Id="Package\Cargue los productos de ETL\Calcule el precio en dólares de los euros"
+          TopLeft="669,485" />
+        <NodeLayout
+          Size="267,42"
+          Id="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto"
+          TopLeft="664,204" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Cargue los productos de ETL\División condicional"
+          TopLeft="719,386" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Cargue los productos de ETL\Grabar Productos"
+          TopLeft="706,746" />
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Salida de origen de OLE DB]"
+          TopLeft="794.5,80">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Salida de columna derivada2]"
+          TopLeft="802.75,333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53"
+              Start="0,0"
+              End="0,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Salida de columna derivada1]"
+          TopLeft="799.25,246">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Salida de columna derivada]"
+          TopLeft="795.5,165">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Rupias]"
+          TopLeft="788.2,428">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-326.7,85"
+              Start="0,0"
+              End="-326.7,77.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.021978021978" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.021978021978"
+                    Point2="0,38.021978021978"
+                    Point3="-4,38.021978021978" />
+                  <mssgle:LineSegment
+                    End="-322.7,38.021978021978" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-322.7,38.021978021978"
+                    Point2="-326.7,38.021978021978"
+                    Point3="-326.7,42.021978021978" />
+                  <mssgle:LineSegment
+                    End="-326.7,77.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-178.547578125,43.021978021978,30.39515625,11.3310546875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Euros]"
+          TopLeft="803.75,428">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57"
+              Start="0,0"
+              End="0,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-12.877578125,20.0390625,25.75515625,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Dolares]"
+          TopLeft="845.25,428">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="367.75,59"
+              Start="0,0"
+              End="367.75,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.2706333973129" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.2706333973129"
+                    Point2="0,20.2706333973129"
+                    Point3="4,20.2706333973129" />
+                  <mssgle:LineSegment
+                    End="363.75,20.2706333973129" />
+                  <mssgle:CubicBezierSegment
+                    Point1="363.75,20.2706333973129"
+                    Point2="367.75,20.2706333973129"
+                    Point3="367.75,24.2706333973129" />
+                  <mssgle:LineSegment
+                    End="367.75,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="166.802421875,25.2706333973129,34.14515625,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Los productos de color &quot;Rojo&quot; tienen el precio en Euros&#xA;Los productos de color &quot;Azul&quot; y &quot;Amarillo&quot; tienen el precio en Rupias&#xD;&#xA;Los producto color en Nulo tienen el precio en Talegos&#xA;Los demás colores de productos no ocupan conversión del precio"
+          ParentId="Package\Cargue los productos de ETL"
+          FontInfo="{assembly:Null}"
+          Size="392,88"
+          Id="1e5717f7-5df7-41b4-8e19-7100ccf8f3e3"
+          TopLeft="258,239" />
+        <NodeLayout
+          Size="266,42"
+          Id="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce"
+          TopLeft="646,645" />
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Salida de columna derivada3]"
+          TopLeft="461.5,555">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="291.7,90"
+              Start="0,0"
+              End="291.7,82.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.8334721065778" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.8334721065778"
+                    Point2="0,49.8334721065778"
+                    Point3="4,49.8334721065778" />
+                  <mssgle:LineSegment
+                    End="287.7,49.8334721065778" />
+                  <mssgle:CubicBezierSegment
+                    Point1="287.7,49.8334721065778"
+                    Point2="291.7,49.8334721065778"
+                    Point3="291.7,53.8334721065778" />
+                  <mssgle:LineSegment
+                    End="291.7,82.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Salida de columna derivada4]"
+          TopLeft="803.9,527">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,118"
+              Start="0,0"
+              End="0,110.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,110.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Salida de columna derivada5]"
+          TopLeft="1213,529">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-356.6,116"
+              Start="0,0"
+              End="-356.6,108.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,77.8027571580063" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,77.8027571580063"
+                    Point2="0,81.8027571580063"
+                    Point3="-4,81.8027571580063" />
+                  <mssgle:LineSegment
+                    End="-352.6,81.8027571580063" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-352.6,81.8027571580063"
+                    Point2="-356.6,81.8027571580063"
+                    Point3="-356.6,85.8027571580063" />
+                  <mssgle:LineSegment
+                    End="-356.6,108.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Salida de Unión de todo 1]"
+          TopLeft="782.75,687">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="276,42"
+          Id="Package\Cargue los productos de ETL\Calcule el precio en dólares de los talegos"
+          TopLeft="0,486" />
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Talegos]"
+          TopLeft="755.6,428">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-617.6,58"
+              Start="0,0"
+              End="-617.6,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.3857493857494" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.3857493857494"
+                    Point2="0,17.3857493857494"
+                    Point3="-4,17.3857493857494" />
+                  <mssgle:LineSegment
+                    End="-613.6,17.3857493857494" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-613.6,17.3857493857494"
+                    Point2="-617.6,17.3857493857494"
+                    Point3="-617.6,21.3857493857494" />
+                  <mssgle:LineSegment
+                    End="-617.6,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-326.738671875,22.3857493857494,35.87734375,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Salida de columna derivada6]"
+          TopLeft="138,528">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="563.6,117"
+              Start="0,0"
+              End="563.6,109.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.507953340403" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,78.507953340403"
+                    Point2="0,82.507953340403"
+                    Point3="4,82.507953340403" />
+                  <mssgle:LineSegment
+                    End="559.6,82.507953340403" />
+                  <mssgle:CubicBezierSegment
+                    Point1="559.6,82.507953340403"
+                    Point2="563.6,82.507953340403"
+                    Point3="563.6,86.507953340403" />
+                  <mssgle:LineSegment
+                    End="563.6,109.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargue los productos de ETL\Grabar Productos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargue los productos de ETL\Leer Products">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
