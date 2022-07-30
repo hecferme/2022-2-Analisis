@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{D5B90ADF-8D14-4282-98E2-A4937DF43E47}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{0D55048B-B253-4D72-8940-5E7BE9CA1446}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -42,6 +42,15 @@
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BA0BF1C9-8F46-492A-86E0-8D8B9B794C48}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="QtyProductosEnRupias">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{16D4E677-8CAD-4F93-A69D-2FC19EF4623B}"
@@ -560,6 +569,35 @@
               </outputs>
             </component>
             <component
+              refId="Package\Cargue los productos de ETL\Cuente los registros en rupias"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Recuento de filas;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Cuenta las filas a medida que pasan por un flujo de datos. Por ejemplo, se usa el número de filas procesadas para determinar si deben o no realizarse operaciones de limpieza o actualizar el texto de un mensaje de correo electrónico para comunicar el estado de procesamiento."
+              name="Cuente los registros en rupias">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el recuento de filas."
+                  name="VariableName">User::QtyProductosEnRupias</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Cargue los productos de ETL\Cuente los registros en rupias.Inputs[Entrada de Recuento de filas 1]"
+                  hasSideEffects="true"
+                  name="Entrada de Recuento de filas 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargue los productos de ETL\Cuente los registros en rupias.Outputs[Salida de Recuento de filas 1]"
+                  name="Salida de Recuento de filas 1"
+                  synchronousInputId="Package\Cargue los productos de ETL\Cuente los registros en rupias.Inputs[Entrada de Recuento de filas 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Cargue los productos de ETL\División condicional"
               componentClassID="Microsoft.ConditionalSplit"
               contactInfo="División condicional;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
@@ -713,216 +751,6 @@
               name="Enlace todos los flujos en un solo cauce"
               version="1">
               <inputs>
-                <input
-                  refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1]"
-                  name="Entrada de Unión de todo 1">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[ProductID]"
-                      cachedDataType="i4"
-                      cachedName="ProductID"
-                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductID]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Id. de linaje de columna de salida"
-                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductID]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[Name]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Name"
-                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Name]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Id. de linaje de columna de salida"
-                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Name]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[Color]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="Color"
-                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Color]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Id. de linaje de columna de salida"
-                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Color]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[StandardCost]"
-                      cachedDataType="cy"
-                      cachedName="StandardCost"
-                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[StandardCost]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Id. de linaje de columna de salida"
-                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[StandardCost]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[ListPrice]"
-                      cachedDataType="cy"
-                      cachedName="ListPrice"
-                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ListPrice]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Id. de linaje de columna de salida"
-                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ListPrice]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[Size]"
-                      cachedDataType="wstr"
-                      cachedLength="5"
-                      cachedName="Size"
-                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Size]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Id. de linaje de columna de salida"
-                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Size]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[Weight]"
-                      cachedDataType="numeric"
-                      cachedName="Weight"
-                      cachedPrecision="8"
-                      cachedScale="2"
-                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Weight]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Id. de linaje de columna de salida"
-                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Weight]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[SellStartDate]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="SellStartDate"
-                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellStartDate]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Id. de linaje de columna de salida"
-                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[SellStartDate]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[SellEndDate]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="SellEndDate"
-                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellEndDate]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Id. de linaje de columna de salida"
-                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[SellEndDate]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[DiscontinuedDate]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="DiscontinuedDate"
-                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[DiscontinuedDate]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Id. de linaje de columna de salida"
-                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[DiscontinuedDate]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[ProductCategoryName]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="ProductCategoryName"
-                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductCategoryName]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Id. de linaje de columna de salida"
-                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductCategoryName]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[ProductModelName]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="ProductModelName"
-                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductModelName]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Id. de linaje de columna de salida"
-                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductModelName]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[UppercaseProductName]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="UppercaseProductName"
-                      lineageId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Outputs[Salida de columna derivada].Columns[UppercaseProductName]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Id. de linaje de columna de salida"
-                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[UppercaseProductName]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[MesesEnElMercado]"
-                      cachedDataType="i4"
-                      cachedName="MesesEnElMercado"
-                      lineageId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Outputs[Salida de columna derivada].Columns[MesesEnElMercado]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Id. de linaje de columna de salida"
-                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[MesesEnElMercado]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1].Columns[DollarsUnitPrice]"
-                      cachedDataType="r8"
-                      cachedName="DollarsUnitPrice"
-                      lineageId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de columna derivada].Columns[DollarsUnitPrice]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Id. de linaje de columna de salida"
-                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[DollarsUnitPrice]}</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
                 <input
                   refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 2]"
                   hasSideEffects="true"
@@ -1558,9 +1386,220 @@
                 </input>
                 <input
                   refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 5]"
-                  dangling="true"
                   hasSideEffects="true"
                   name="Entrada de Unión de todo 5">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 5].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 5].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 5].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Color]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Color]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 5].Columns[StandardCost]"
+                      cachedDataType="cy"
+                      cachedName="StandardCost"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[StandardCost]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[StandardCost]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 5].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ListPrice]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ListPrice]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 5].Columns[Size]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="Size"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Size]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Size]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 5].Columns[Weight]"
+                      cachedDataType="numeric"
+                      cachedName="Weight"
+                      cachedPrecision="8"
+                      cachedScale="2"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[Weight]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[Weight]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 5].Columns[SellStartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellStartDate"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellStartDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[SellStartDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 5].Columns[SellEndDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellEndDate"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[SellEndDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[SellEndDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 5].Columns[DiscontinuedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DiscontinuedDate"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[DiscontinuedDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[DiscontinuedDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 5].Columns[ProductCategoryName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductCategoryName"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductCategoryName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductCategoryName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 5].Columns[ProductModelName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductModelName"
+                      lineageId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB].Columns[ProductModelName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[ProductModelName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 5].Columns[UppercaseProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="UppercaseProductName"
+                      lineageId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Outputs[Salida de columna derivada].Columns[UppercaseProductName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[UppercaseProductName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 5].Columns[MesesEnElMercado]"
+                      cachedDataType="i4"
+                      cachedName="MesesEnElMercado"
+                      lineageId="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto.Outputs[Salida de columna derivada].Columns[MesesEnElMercado]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[MesesEnElMercado]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 5].Columns[DollarsUnitPrice]"
+                      cachedDataType="r8"
+                      cachedName="DollarsUnitPrice"
+                      lineageId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de columna derivada].Columns[DollarsUnitPrice]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Outputs[Salida de Unión de todo 1].Columns[DollarsUnitPrice]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Entrada de Unión de todo 1">
                   <externalMetadataColumns />
                 </input>
               </inputs>
@@ -2358,29 +2397,34 @@ FROM            SalesLT.Product AS p INNER JOIN
               startId="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares.Outputs[Salida de columna derivada]" />
             <path
               refId="Package\Cargue los productos de ETL.Paths[Salida de columna derivada3]"
-              endId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 1]"
-              name="Salida de columna derivada"
-              startId="Package\Cargue los productos de ETL\Calcule el precio en dólares de las rupias.Outputs[Salida de columna derivada]" />
-            <path
-              refId="Package\Cargue los productos de ETL.Paths[Salida de columna derivada4]"
               endId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 2]"
               name="Salida de columna derivada"
               startId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los euros.Outputs[Salida de columna derivada]" />
             <path
-              refId="Package\Cargue los productos de ETL.Paths[Salida de columna derivada5]"
+              refId="Package\Cargue los productos de ETL.Paths[Salida de columna derivada4]"
               endId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 3]"
               name="Salida de columna derivada"
               startId="Package\Cargue los productos de ETL\Calcule en precio en dólares de los dólares.Outputs[Salida de columna derivada]" />
             <path
-              refId="Package\Cargue los productos de ETL.Paths[Salida de columna derivada6]"
+              refId="Package\Cargue los productos de ETL.Paths[Salida de columna derivada5]"
               endId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 4]"
               name="Salida de columna derivada"
               startId="Package\Cargue los productos de ETL\Calcule el precio en dólares de los talegos.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\Cargue los productos de ETL.Paths[Salida de columna derivada6]"
+              endId="Package\Cargue los productos de ETL\Cuente los registros en rupias.Inputs[Entrada de Recuento de filas 1]"
+              name="Salida de columna derivada"
+              startId="Package\Cargue los productos de ETL\Calcule el precio en dólares de las rupias.Outputs[Salida de columna derivada]" />
             <path
               refId="Package\Cargue los productos de ETL.Paths[Salida de origen de OLE DB]"
               endId="Package\Cargue los productos de ETL\Pasar a mayúsculas.Inputs[Entrada de columna derivada]"
               name="Salida de origen de OLE DB"
               startId="Package\Cargue los productos de ETL\Leer Products.Outputs[Salida de origen de OLE DB]" />
+            <path
+              refId="Package\Cargue los productos de ETL.Paths[Salida de Recuento de filas 1]"
+              endId="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce.Inputs[Entrada de Unión de todo 5]"
+              name="Salida de Recuento de filas 1"
+              startId="Package\Cargue los productos de ETL\Cuente los registros en rupias.Outputs[Salida de Recuento de filas 1]" />
             <path
               refId="Package\Cargue los productos de ETL.Paths[Salida de Unión de todo 1]"
               endId="Package\Cargue los productos de ETL\Grabar Productos.Inputs[Entrada de destino de SQL Server]"
@@ -2395,7 +2439,32 @@ FROM            SalesLT.Product AS p INNER JOIN
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Pausa"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{9A11746D-F893-45EA-8BEA-A914E2914BC2}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Pausa"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{ACE783D2-32E0-4604-90EB-E3F5D2A99938}"
+      DTS:From="Package\Cargue los productos de ETL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Pausa" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -2407,11 +2476,49 @@ FROM            SalesLT.Product AS p INNER JOIN
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="214,42"
           Id="Package\Cargue los productos de ETL"
           TopLeft="443,60" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\Pausa"
+          TopLeft="544,159" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="550,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="47.5,57"
+              Start="0,0"
+              End="47.5,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5"
+                    Point2="0,28.5"
+                    Point3="4,28.5" />
+                  <mssgle:LineSegment
+                    End="43.5,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="43.5,28.5"
+                    Point2="47.5,28.5"
+                    Point3="47.5,32.5" />
+                  <mssgle:LineSegment
+                    End="47.5,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -2421,41 +2528,143 @@ FROM            SalesLT.Product AS p INNER JOIN
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="280,42"
-          Id="Package\Cargue los productos de ETL\Calcule en precio en dólares de los dólares"
-          TopLeft="1073,487" />
+          Size="276,42"
+          Id="Package\Cargue los productos de ETL\Calcule el precio en dólares de los talegos"
+          TopLeft="0,486" />
+        <NodeLayout
+          Size="266,42"
+          Id="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce"
+          TopLeft="644,720" />
         <NodeLayout
           Size="271,42"
           Id="Package\Cargue los productos de ETL\Calcule el precio en dólares de las rupias"
-          TopLeft="326,513" />
+          TopLeft="325,483" />
         <NodeLayout
           Size="234,42"
           Id="Package\Cargue los productos de ETL\Cree la columna PrecioEnDolares"
           TopLeft="684,291" />
         <NodeLayout
           Size="171,42"
+          Id="Package\Cargue los productos de ETL\División condicional"
+          TopLeft="719,386" />
+        <NodeLayout
+          Size="171,42"
           Id="Package\Cargue los productos de ETL\Pasar a mayúsculas"
           TopLeft="708,123" />
         <NodeLayout
-          Size="143,42"
-          Id="Package\Cargue los productos de ETL\Leer Products"
-          TopLeft="724,38" />
+          Size="280,42"
+          Id="Package\Cargue los productos de ETL\Calcule en precio en dólares de los dólares"
+          TopLeft="1073,487" />
         <NodeLayout
           Size="268,42"
           Id="Package\Cargue los productos de ETL\Calcule el precio en dólares de los euros"
           TopLeft="669,485" />
         <NodeLayout
+          Size="161,42"
+          Id="Package\Cargue los productos de ETL\Grabar Productos"
+          TopLeft="703,801" />
+        <NodeLayout
           Size="267,42"
           Id="Package\Cargue los productos de ETL\Calcular intervalo de venta del producto"
           TopLeft="664,204" />
         <NodeLayout
-          Size="171,42"
-          Id="Package\Cargue los productos de ETL\División condicional"
-          TopLeft="719,386" />
-        <NodeLayout
-          Size="161,42"
-          Id="Package\Cargue los productos de ETL\Grabar Productos"
-          TopLeft="706,746" />
+          Size="143,42"
+          Id="Package\Cargue los productos de ETL\Leer Products"
+          TopLeft="724,38" />
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Dolares]"
+          TopLeft="845.25,428">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="367.75,59"
+              Start="0,0"
+              End="367.75,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.2706333973129" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.2706333973129"
+                    Point2="0,20.2706333973129"
+                    Point3="4,20.2706333973129" />
+                  <mssgle:LineSegment
+                    End="363.75,20.2706333973129" />
+                  <mssgle:CubicBezierSegment
+                    Point1="363.75,20.2706333973129"
+                    Point2="367.75,20.2706333973129"
+                    Point3="367.75,24.2706333973129" />
+                  <mssgle:LineSegment
+                    End="367.75,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="166.802421875,25.2706333973129,34.14515625,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Talegos]"
+          TopLeft="755.6,428">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-617.6,58"
+              Start="0,0"
+              End="-617.6,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.3857493857494" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.3857493857494"
+                    Point2="0,17.3857493857494"
+                    Point3="-4,17.3857493857494" />
+                  <mssgle:LineSegment
+                    End="-613.6,17.3857493857494" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-613.6,17.3857493857494"
+                    Point2="-617.6,17.3857493857494"
+                    Point3="-617.6,21.3857493857494" />
+                  <mssgle:LineSegment
+                    End="-617.6,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-326.738671875,22.3857493857494,35.87734375,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Salida de Unión de todo 1]"
+          TopLeft="780.25,762">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargue los productos de ETL.Paths[Salida de origen de OLE DB]"
           TopLeft="794.5,80">
@@ -2470,6 +2679,96 @@ FROM            SalesLT.Product AS p INNER JOIN
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Salida de columna derivada5]"
+          TopLeft="138,528">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="561.6,192"
+              Start="0,0"
+              End="561.6,184.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,131.397667020148" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,131.397667020148"
+                    Point2="0,135.397667020148"
+                    Point3="4,135.397667020148" />
+                  <mssgle:LineSegment
+                    End="557.6,135.397667020148" />
+                  <mssgle:CubicBezierSegment
+                    Point1="557.6,135.397667020148"
+                    Point2="561.6,135.397667020148"
+                    Point3="561.6,139.397667020148" />
+                  <mssgle:LineSegment
+                    End="561.6,184.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Salida de columna derivada4]"
+          TopLeft="1213,529">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-358.6,191"
+              Start="0,0"
+              End="-358.6,183.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,130.692470837752" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,130.692470837752"
+                    Point2="0,134.692470837752"
+                    Point3="-4,134.692470837752" />
+                  <mssgle:LineSegment
+                    End="-354.6,134.692470837752" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-354.6,134.692470837752"
+                    Point2="-358.6,134.692470837752"
+                    Point3="-358.6,138.692470837752" />
+                  <mssgle:LineSegment
+                    End="-358.6,183.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Salida de columna derivada3]"
+          TopLeft="802.9,527">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,193"
+              Start="0,0"
+              End="0,185.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,185.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2550,33 +2849,33 @@ FROM            SalesLT.Product AS p INNER JOIN
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-326.7,85"
+              EndConnector="-327.7,55"
               Start="0,0"
-              End="-326.7,77.5">
+              End="-327.7,47.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.021978021978" />
+                    End="0,20.6024563671623" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,34.021978021978"
-                    Point2="0,38.021978021978"
-                    Point3="-4,38.021978021978" />
+                    Point1="0,20.6024563671623"
+                    Point2="0,24.6024563671623"
+                    Point3="-4,24.6024563671623" />
                   <mssgle:LineSegment
-                    End="-322.7,38.021978021978" />
+                    End="-323.7,24.6024563671623" />
                   <mssgle:CubicBezierSegment
-                    Point1="-322.7,38.021978021978"
-                    Point2="-326.7,38.021978021978"
-                    Point3="-326.7,42.021978021978" />
+                    Point1="-323.7,24.6024563671623"
+                    Point2="-327.7,24.6024563671623"
+                    Point3="-327.7,28.6024563671623" />
                   <mssgle:LineSegment
-                    End="-326.7,77.5" />
+                    End="-327.7,47.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-178.547578125,43.021978021978,30.39515625,11.3310546875"
+              BoundingBox="-179.047578125,29.6024563671623,30.39515625,11.3310546875"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2604,231 +2903,65 @@ FROM            SalesLT.Product AS p INNER JOIN
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargue los productos de ETL.Paths[Dolares]"
-          TopLeft="845.25,428">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="367.75,59"
-              Start="0,0"
-              End="367.75,51.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.2706333973129" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.2706333973129"
-                    Point2="0,20.2706333973129"
-                    Point3="4,20.2706333973129" />
-                  <mssgle:LineSegment
-                    End="363.75,20.2706333973129" />
-                  <mssgle:CubicBezierSegment
-                    Point1="363.75,20.2706333973129"
-                    Point2="367.75,20.2706333973129"
-                    Point3="367.75,24.2706333973129" />
-                  <mssgle:LineSegment
-                    End="367.75,51.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="166.802421875,25.2706333973129,34.14515625,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <AnnotationLayout
-          Text="Los productos de color &quot;Rojo&quot; tienen el precio en Euros&#xA;Los productos de color &quot;Azul&quot; y &quot;Amarillo&quot; tienen el precio en Rupias&#xD;&#xA;Los producto color en Nulo tienen el precio en Talegos&#xA;Los demás colores de productos no ocupan conversión del precio"
+          Text="Los productos de color &quot;Rojo&quot; tienen el precio en Euros&#xA;Los productos de color &quot;Azul&quot; y &quot;Amarillo&quot; tienen el precio en Rupias&#xA;Los producto color en Nulo tienen el precio en Talegos&#xA;Los demás colores de productos no ocupan conversión del precio"
           ParentId="Package\Cargue los productos de ETL"
           FontInfo="{assembly:Null}"
           Size="392,88"
           Id="1e5717f7-5df7-41b4-8e19-7100ccf8f3e3"
           TopLeft="258,239" />
         <NodeLayout
-          Size="266,42"
-          Id="Package\Cargue los productos de ETL\Enlace todos los flujos en un solo cauce"
-          TopLeft="646,645" />
-        <EdgeLayout
-          Id="Package\Cargue los productos de ETL.Paths[Salida de columna derivada3]"
-          TopLeft="461.5,555">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="291.7,90"
-              Start="0,0"
-              End="291.7,82.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,45.8334721065778" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,45.8334721065778"
-                    Point2="0,49.8334721065778"
-                    Point3="4,49.8334721065778" />
-                  <mssgle:LineSegment
-                    End="287.7,49.8334721065778" />
-                  <mssgle:CubicBezierSegment
-                    Point1="287.7,49.8334721065778"
-                    Point2="291.7,49.8334721065778"
-                    Point3="291.7,53.8334721065778" />
-                  <mssgle:LineSegment
-                    End="291.7,82.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargue los productos de ETL.Paths[Salida de columna derivada4]"
-          TopLeft="803.9,527">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,118"
-              Start="0,0"
-              End="0,110.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,110.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargue los productos de ETL.Paths[Salida de columna derivada5]"
-          TopLeft="1213,529">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-356.6,116"
-              Start="0,0"
-              End="-356.6,108.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,77.8027571580063" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,77.8027571580063"
-                    Point2="0,81.8027571580063"
-                    Point3="-4,81.8027571580063" />
-                  <mssgle:LineSegment
-                    End="-352.6,81.8027571580063" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-352.6,81.8027571580063"
-                    Point2="-356.6,81.8027571580063"
-                    Point3="-356.6,85.8027571580063" />
-                  <mssgle:LineSegment
-                    End="-356.6,108.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargue los productos de ETL.Paths[Salida de Unión de todo 1]"
-          TopLeft="782.75,687">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59"
-              Start="0,0"
-              End="0,51.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="276,42"
-          Id="Package\Cargue los productos de ETL\Calcule el precio en dólares de los talegos"
-          TopLeft="0,486" />
-        <EdgeLayout
-          Id="Package\Cargue los productos de ETL.Paths[Talegos]"
-          TopLeft="755.6,428">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-617.6,58"
-              Start="0,0"
-              End="-617.6,50.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,13.3857493857494" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.3857493857494"
-                    Point2="0,17.3857493857494"
-                    Point3="-4,17.3857493857494" />
-                  <mssgle:LineSegment
-                    End="-613.6,17.3857493857494" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-613.6,17.3857493857494"
-                    Point2="-617.6,17.3857493857494"
-                    Point3="-617.6,21.3857493857494" />
-                  <mssgle:LineSegment
-                    End="-617.6,50.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-326.738671875,22.3857493857494,35.87734375,11.6630859375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="219,42"
+          Id="Package\Cargue los productos de ETL\Cuente los registros en rupias"
+          TopLeft="344,556" />
         <EdgeLayout
           Id="Package\Cargue los productos de ETL.Paths[Salida de columna derivada6]"
-          TopLeft="138,528">
+          TopLeft="457,525">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="563.6,117"
+              EndConnector="0,31"
               Start="0,0"
-              End="563.6,109.5">
+              End="0,23.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,78.507953340403" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,78.507953340403"
-                    Point2="0,82.507953340403"
-                    Point3="4,82.507953340403" />
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargue los productos de ETL.Paths[Salida de Recuento de filas 1]"
+          TopLeft="453.5,598">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="297.7,122"
+              Start="0,0"
+              End="297.7,114.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="559.6,82.507953340403" />
+                    End="0,63.5520399666944" />
                   <mssgle:CubicBezierSegment
-                    Point1="559.6,82.507953340403"
-                    Point2="563.6,82.507953340403"
-                    Point3="563.6,86.507953340403" />
+                    Point1="0,63.5520399666944"
+                    Point2="0,67.5520399666944"
+                    Point3="4,67.5520399666944" />
                   <mssgle:LineSegment
-                    End="563.6,109.5" />
+                    End="293.7,67.5520399666944" />
+                  <mssgle:CubicBezierSegment
+                    Point1="293.7,67.5520399666944"
+                    Point2="297.7,67.5520399666944"
+                    Point3="297.7,71.5520399666944" />
+                  <mssgle:LineSegment
+                    End="297.7,114.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
