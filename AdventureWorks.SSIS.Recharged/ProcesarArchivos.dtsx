@@ -1,0 +1,793 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/13/2022 8:10:25 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ULAT-SP-LB6-PR"
+  DTS:CreatorName="ULATINA0\laboratorio"
+  DTS:DTSID="{C3AEF4F4-E905-4A41-BD0E-BD0056E1CDA5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.521.0"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="Package2"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{5E4AE5EC-236F-4821-9864-EB23472DFCEA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[New Files]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{1A225DBB-390C-47B5-B2AF-F52E81F016E5}"
+      DTS:ObjectName="New Files">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::MiNombreDeArchivo]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="3082"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ProductID"
+              DTS:DTSID="{D4635F05-418F-4D81-8765-381EBEDC6705}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Name"
+              DTS:DTSID="{AD09080C-C758-4E76-8665-110A4C13A02A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ProductNumber"
+              DTS:DTSID="{FD0E9FD7-A7D6-47BE-B401-B269F67E055D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="6"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Color"
+              DTS:DTSID="{D77D8304-591D-4FE1-9034-16DF9E277AC8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StandardCost"
+              DTS:DTSID="{2A128B39-D6DA-4192-A409-ADCF6C610E3C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ListPrice"
+              DTS:DTSID="{DAF24F75-3096-4766-97F1-23EEC5448341}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Size"
+              DTS:DTSID="{D947C287-58C4-4341-961B-933171AC0262}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Weight"
+              DTS:DTSID="{781E6A13-5687-4A02-987C-AA6D4A1A7EF7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ProductCategoryID"
+              DTS:DTSID="{D066B754-D082-42B5-B7A6-0A0F389C11CC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ProductModelID"
+              DTS:DTSID="{99E46BD5-348D-4EC1-ABAF-865707498AC6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SellStartDate"
+              DTS:DTSID="{2337C9B4-D658-4E3C-98C3-1D9FA93E71B1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SellEndDate"
+              DTS:DTSID="{223F6D48-7268-41F1-A6B6-1707ED52F5F9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DiscontinuedDate"
+              DTS:DTSID="{F3CF0A0C-6E64-4480-91BE-2E29F56413C0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="6822"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ThumbNailPhoto"
+              DTS:DTSID="{48C41ADF-9FEB-42DF-9761-2401ACB85BD2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="28"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ThumbnailPhotoFileName"
+              DTS:DTSID="{2AEA1808-2AF6-47BC-8D03-9BE12323CBAF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="36"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="rowguid"
+              DTS:DTSID="{B880DB38-F10A-4753-B4AE-14BE81688E20}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ModifiedDate"
+              DTS:DTSID="{4C01E5D5-B924-4E00-A4A7-4705EBA0F6B1}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8FBF48B4-340A-41B4-8011-61887ED44B3A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="MiNombreDeArchivo">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{C6BD68C8-95A7-49E1-95D0-BF2C9D07833F}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{236F89D3-9E75-4B0B-AF21-BF52C475F5D3}"
+        DTS:ObjectName="{236F89D3-9E75-4B0B-AF21-BF52C475F5D3}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\Users\laboratorio\Desktop\Nuevos" />
+            <FEFEProperty
+              FileSpec="new*.txt" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="-1" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Tarea Flujo de datos"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarea Flujo de datos"
+          DTS:DTSID="{0D0D2D76-0040-4F09-BBA7-1F1E205479B7}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Tarea Flujo de datos"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Origen de archivo plano;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+                  description="Origen de archivo plano"
+                  localeId="3082"
+                  name="leer el archivo de texto"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Especifica si las columnas de longitud cero se tratan como NULL."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica el nombre de una columna de salida que contiene el nombre de archivo. Si no se especifica ningún nombre, no se genera ninguna columna de salida con el nombre de archivo."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[New Files]"
+                      connectionManagerRefId="Package.ConnectionManagers[New Files]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano]"
+                      name="Salida de origen de archivo plano">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[ProductID]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[ProductID]"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[ProductID]"
+                          name="ProductID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si los datos están en formato binario."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[Name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[Name]"
+                          length="30"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[Name]"
+                          name="Name"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si los datos están en formato binario."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[ProductNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[ProductNumber]"
+                          length="10"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[ProductNumber]"
+                          name="ProductNumber"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si los datos están en formato binario."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[Color]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[Color]"
+                          length="6"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[Color]"
+                          name="Color"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si los datos están en formato binario."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[StandardCost]"
+                          dataType="r4"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[StandardCost]"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[StandardCost]"
+                          name="StandardCost"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si los datos están en formato binario."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[ListPrice]"
+                          dataType="r4"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[ListPrice]"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[ListPrice]"
+                          name="ListPrice"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si los datos están en formato binario."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[Size]"
+                          dataType="i1"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[Size]"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[Size]"
+                          name="Size"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si los datos están en formato binario."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[Weight]"
+                          dataType="r4"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[Weight]"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[Weight]"
+                          name="Weight"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si los datos están en formato binario."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[ProductCategoryID]"
+                          dataType="i1"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[ProductCategoryID]"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[ProductCategoryID]"
+                          name="ProductCategoryID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si los datos están en formato binario."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[ProductModelID]"
+                          dataType="i1"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[ProductModelID]"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[ProductModelID]"
+                          name="ProductModelID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si los datos están en formato binario."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[SellStartDate]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[SellStartDate]"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[SellStartDate]"
+                          name="SellStartDate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si los datos están en formato binario."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[SellEndDate]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[SellEndDate]"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[SellEndDate]"
+                          name="SellEndDate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si los datos están en formato binario."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[DiscontinuedDate]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[DiscontinuedDate]"
+                          length="4"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[DiscontinuedDate]"
+                          name="DiscontinuedDate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si los datos están en formato binario."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[ThumbNailPhoto]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[ThumbNailPhoto]"
+                          length="6822"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[ThumbNailPhoto]"
+                          name="ThumbNailPhoto"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si los datos están en formato binario."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[ThumbnailPhotoFileName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[ThumbnailPhotoFileName]"
+                          length="28"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[ThumbnailPhotoFileName]"
+                          name="ThumbnailPhotoFileName"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si los datos están en formato binario."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[rowguid]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[rowguid]"
+                          length="36"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[rowguid]"
+                          name="rowguid"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si los datos están en formato binario."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[ModifiedDate]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].Columns[ModifiedDate]"
+                          name="ModifiedDate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si los datos están en formato binario."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[ProductID]"
+                          dataType="i2"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[Name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[ProductNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="ProductNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[Color]"
+                          codePage="1252"
+                          dataType="str"
+                          length="6"
+                          name="Color" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[StandardCost]"
+                          dataType="r4"
+                          name="StandardCost" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[ListPrice]"
+                          dataType="r4"
+                          name="ListPrice" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[Size]"
+                          dataType="i1"
+                          name="Size" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[Weight]"
+                          dataType="r4"
+                          name="Weight" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[ProductCategoryID]"
+                          dataType="i1"
+                          name="ProductCategoryID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[ProductModelID]"
+                          dataType="i1"
+                          name="ProductModelID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[SellStartDate]"
+                          dataType="date"
+                          name="SellStartDate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[SellEndDate]"
+                          dataType="date"
+                          name="SellEndDate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[DiscontinuedDate]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          name="DiscontinuedDate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[ThumbNailPhoto]"
+                          codePage="1252"
+                          dataType="str"
+                          length="6822"
+                          name="ThumbNailPhoto" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[ThumbnailPhotoFileName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="28"
+                          name="ThumbnailPhotoFileName" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[rowguid]"
+                          codePage="1252"
+                          dataType="str"
+                          length="36"
+                          name="rowguid" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de origen de archivo plano].ExternalColumns[ModifiedDate]"
+                          dataType="date"
+                          name="ModifiedDate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de error de origen de archivo plano]"
+                      isErrorOut="true"
+                      name="Salida de error de origen de archivo plano">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de error de origen de archivo plano].Columns[Columna de salida de error de origen de archivo plano]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Columna de salida de error de origen de archivo plano"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de error de origen de archivo plano].Columns[Columna de salida de error de origen de archivo plano]"
+                          name="Columna de salida de error de origen de archivo plano" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de error de origen de archivo plano].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de error de origen de archivo plano].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de error de origen de archivo plano].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto.Outputs[Salida de error de origen de archivo plano].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{CE021F52-CF2F-4640-ACF0-63EA485AE7EA}"
+          DTS:ObjectName="{CE021F52-CF2F-4640-ACF0-63EA485AE7EA}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::MiNombreDeArchivo" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Foreach Loop Container\Tarea Flujo de datos"
+          TopLeft="27,30" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="229,154"
+          Size="229,197"
+          Id="Package\Foreach Loop Container"
+          TopLeft="367,74" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\Tarea Flujo de datos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Foreach Loop Container\Tarea Flujo de datos\leer el archivo de texto"
+          TopLeft="526,46" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
